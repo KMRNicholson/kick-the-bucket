@@ -2,7 +2,7 @@
   "name": "before-i-go-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://kickthebucket.net",
+  "homepage": "https://kickthebucket.net",
   "dependencies": {
     "@material-ui/core": "^3.1.0",
     "@material-ui/icons": "^3.0.1",
@@ -24,6 +24,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "aws s3 sync build/ s3://kick-the-bucket-app"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
   }
 }
