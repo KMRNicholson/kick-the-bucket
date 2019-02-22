@@ -1,0 +1,130 @@
+.App {
+  height:100%;
+  width:100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  text-align: center;
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.font-colour{
+  color: #2C2C2C;
+}
+
+.mg-sm {
+  margin: 4em;
+}
+
+.mg-m {
+  margin: 6em;
+}
+.error-color {
+  color: #FF0000;
+}
+
+.mg-xs {
+  margin: 2em;
+}
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-small {
+  font-size: 0.25em;
+}
+
+.move-down{
+  margin-top: 7em;
+}
+
+
+.text-medium {
+  font-size: 1.25em;
+}
+
+.text-large {
+  font-size: 1.25em;
+}
+.text-container {
+  line-height: 1.75em;
+  font-family: 'Karla', sans-serif;
+}
+
+.text-header{
+  font-family: 'Archivo', sans-serif;
+}
+
+.text-bar{
+  font-family: 'Karla', sans-serif;
+}
+.card-1 {
+  background-color: #F2F2F2;
+  border-radius: .5em;
+  display: inline-block;
+  height: 18em;
+  margin-top: 10em;
+  position: relative;
+  width: 20em;
+}
+
+.card-shadow-1 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.ta-center {
+  text-align: center;
+}
+
+.card-2 {
+  background-color: #F2F2F2;
+  border-radius: .5em;
+  display: inline-block;
+  height: 35em;
+  margin-top: 7em;
+  position: relative;
+  width: 20em;
+}
+
+#button-1 {
+  margin:2em;
+}

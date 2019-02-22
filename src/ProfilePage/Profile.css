@@ -1,0 +1,46 @@
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.card-shadow-1 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.ta-center {
+  text-align: center;
+}
+
+.card-3 {
+  background-color: #F2F2F2;
+  border-radius: .5em;
+  display: inline-block;
+  height: 30em;
+  margin: 1em;
+  padding: 1em;
+  position: relative;
+  width: 20em;
+}
+
+.card-4 {
+  background-color: #F2F2F2;
+  border-radius: .5em;
+  height: 27em;
+  margin: 1.5em;
+  margin-top: 0em;
+  padding: 1em;
+  width: auto;
+  overflow-x: scroll;
+}
+
+#button-2 {
+  margin:1em;
+}
+
+#button-3 {
+  margin:1em;
+  margin-right:3em;
+}

@@ -1,0 +1,81 @@
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.card-shadow-1 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.10), 0 6px 6px rgba(0,0,0,0.10);
+}
+
+.font-colour{
+  color: #2C2C2C;
+}
+
+
+.text-medium {
+  font-size: 1.25em;
+}
+
+.text-md-sm {
+  font-size: .95em;
+}
+
+.text-big {
+  font-size: 1.40em;
+}
+
+.ta-center {
+  text-align: center;
+}
+
+.card-5 {
+  padding:15px;
+  background-color: #FCFCFC;
+  width: 11em;
+  height: 40vh;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.rec-activity{
+  width: 100%;
+  overflow-x: auto;
+  font-size: auto;
+}
+
+ul{
+  list-style-type: none;
+  padding-left: 0em;
+
+}
+
+li{
+  margin: 20px;
+  font-weight: lighter;
+  padding-top: 0.5em;
+}
+
+.card-6 {
+  padding:15px;
+  background-color: #FCFCFC;
+  width: auto;
+  height: 40vh;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  overflow-x: scroll;
+}
+
+
+#button-2 {
+  margin:1em;
+}
+
+#button-3 {
+  margin:1em;
+  margin-right:3em;
+}
