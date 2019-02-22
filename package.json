@@ -2,7 +2,7 @@
   "name": "before-i-go-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://kick-the-bucket-app.s3-website.us-east-2.amazonaws.com/",
+  "homepage" : "https://kickthebucket.net",
   "dependencies": {
     "@material-ui/core": "^3.1.0",
     "@material-ui/icons": "^3.0.1",
