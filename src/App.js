@@ -17,12 +17,6 @@ class App extends Component {
     }
   }
 
-  componentDidUpdate() {
-    setTimeout(() => {
-        window.dispatchEvent(new Event('resize'));
-    }, 0);
-  }
-
   render() {
     return (
       <Router>
