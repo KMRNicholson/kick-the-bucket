@@ -71,7 +71,6 @@ class AddItem extends Component {
           Authorization:'Bearer '+token
       }})
       .then(function(response){
-        console.log(response)
         newItem.props.parentContext.componentWillMount();
       })
       .catch(function(error){
