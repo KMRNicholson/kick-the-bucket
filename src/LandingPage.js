@@ -14,9 +14,10 @@ import BucketIdea from './images/bucket.png';
 
 class LandingPage extends Component {
   componentWillMount(){
+    console.log("Landing page");
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));
-    }, 0);
+    }, 200);
   }
 
   render() {
