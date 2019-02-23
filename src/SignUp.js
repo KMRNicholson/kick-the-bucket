@@ -101,7 +101,6 @@ class SignUp extends Component {
       }
       axios.post(apiBaseUrl+'auth/signup', payload)
       .then(function(response){
-        console.log(response);
         page.props.history.push("/signin");
       })
       .catch(function(error){

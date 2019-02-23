@@ -12,7 +12,6 @@ import Create from '@material-ui/icons/Create';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 //Images
-import BucketLogo from './images/bucket-4.png'
 import BucketLogo2 from './images/logo.png'
 
 const theme = createMuiTheme({
@@ -45,7 +44,7 @@ class PublicBar extends Component {
               </Button>
             </Link>
             <Link to="/signup" style={{ textDecoration: 'none' }}>
-              <Button variant="bold">
+              <Button>
                 Sign Up
                 <Create></Create>
               </Button>

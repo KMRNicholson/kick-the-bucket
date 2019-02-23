@@ -14,7 +14,6 @@ import Dashboard from '@material-ui/icons/Dashboard';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 //Images
-import BucketLogo from './images/bucket-4.png'
 import BucketLogo2 from './images/logo.png'
 
 const theme = createMuiTheme({

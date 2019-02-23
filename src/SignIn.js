@@ -53,7 +53,6 @@ class SignIn extends Component {
     this.setState({
       message:message
     })
-    console.log(this);
   }
 
   paramsCheck(){
@@ -77,7 +76,6 @@ class SignIn extends Component {
       }
       axios.post(apiBaseUrl+'auth/signin', payload)
       .then(function(response){
-        console.log(response);
         page.props.history.push({
           pathname:"/dashboard",
           state:{
@@ -87,7 +85,6 @@ class SignIn extends Component {
         });
       })
       .catch(function(error){
-        console.log(error);
         page.setState({error:"* Invalid username/password combination."});
       });
     }else{

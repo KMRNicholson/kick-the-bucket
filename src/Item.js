@@ -109,7 +109,6 @@ class Item extends Component {
           Authorization:'Bearer '+token
       }})
       .then(function(response){
-        console.log(response);
         item.props.parentContext.componentWillMount();
       })
       .catch(function(error){
