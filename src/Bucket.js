@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
 import axios from 'axios';
+import { apiBaseUrl } from './global-string';
 
 //Material UI 
 import Typography from '@material-ui/core/Typography';
@@ -67,7 +68,6 @@ class Bucket extends Component {
 
   deleteBucket = () => {
     var item = this;
-    var apiBaseUrl = "http://localhost:8080/";
     axios.delete(apiBaseUrl+'users/'+item.state.ownerId+'/buckets/'+item.state.id, {headers: {
       Authorization:'Bearer '+item.props.token
     }})

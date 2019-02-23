@@ -1,6 +1,7 @@
 //Various react components
 import React, { Component } from 'react';
 import axios from 'axios';
+import { apiBaseUrl } from '../global-string';
 
 //Material UI components
 import Button from '@material-ui/core/Button';
@@ -55,7 +56,6 @@ class CreateBucket extends Component {
   }
 
   createBucket(){
-    var apiBaseUrl = "http://localhost:8080/";
     var id = this.props.parentContext.props.parentContext.state.id;
     var token = this.props.parentContext.props.parentContext.state.token;
     var page = this;

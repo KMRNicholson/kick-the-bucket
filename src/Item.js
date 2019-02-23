@@ -1,6 +1,7 @@
 //Various react components
 import React, { Component } from 'react';
 import axios from 'axios';
+import { apiBaseUrl } from './global-string';
 
 //Material UI components
 import Typography from '@material-ui/core/Typography';
@@ -93,7 +94,6 @@ class Item extends Component {
   }
 
   saveChanges(){
-    var apiBaseUrl = "http://localhost:8080/users/";
     var item = this;
     var token = item.props.token;
 
@@ -103,7 +103,7 @@ class Item extends Component {
         "description":item.state.desc,
         "link":item.state.link
       }
-      axios.patch(apiBaseUrl+item.state.ownerId+"/buckets/"+item.state.bucketId+"/items/"+item.state.id, 
+      axios.patch(apiBaseUrl+"users/"+item.state.ownerId+"/buckets/"+item.state.bucketId+"/items/"+item.state.id, 
         payload, 
         { headers: {
           Authorization:'Bearer '+token
@@ -126,9 +126,8 @@ class Item extends Component {
   deleteItem = () => {
     var item = this;
     var token = item.props.token;
-    var apiBaseUrl = "http://localhost:8080/users/";
 
-    axios.delete(apiBaseUrl+item.state.ownerId+'/buckets/'+item.state.bucketId+'/items/'+item.state.id, {
+    axios.delete(apiBaseUrl+"users/"+item.state.ownerId+'/buckets/'+item.state.bucketId+'/items/'+item.state.id, {
       headers: {
       Authorization:'Bearer '+token
     }})
@@ -142,7 +141,6 @@ class Item extends Component {
 
   completeItem = name => event => {
     event.persist();
-    var apiBaseUrl = "http://localhost:8080/users/";
     var item = this;
     var token = item.props.token;
 
@@ -150,7 +148,7 @@ class Item extends Component {
       isComplete:event.target.checked
     }
 
-    axios.patch(apiBaseUrl+item.state.ownerId+"/buckets/"+item.state.bucketId+"/items/"+item.state.id, payload, {
+    axios.patch(apiBaseUrl+"users/"+item.state.ownerId+"/buckets/"+item.state.bucketId+"/items/"+item.state.id, payload, {
       headers: {
         Authorization:'Bearer '+token
     }})

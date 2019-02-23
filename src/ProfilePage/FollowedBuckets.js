@@ -7,6 +7,7 @@ import Bucket from '../Bucket.js'
 
 //Material UI components
 import Typography from '@material-ui/core/Typography';
+import { apiBaseUrl } from '../global-string';
 
 //Styling
 import './Profile.css';
@@ -24,7 +25,6 @@ class FollowedBuckets extends Component {
   }
 
   componentWillMount(){
-    var apiBaseUrl = "http://localhost:8080/";
     var id = this.props.parentContext.props.parentContext.state.id;
     var token = this.props.parentContext.props.parentContext.state.token;
     var page = this;

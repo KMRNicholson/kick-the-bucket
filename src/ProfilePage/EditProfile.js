@@ -1,6 +1,7 @@
 //Various react components
 import React, { Component } from 'react';
 import axios from 'axios';
+import { apiBaseUrl } from '../global-string';
 
 //Material UI components
 import TextField from '@material-ui/core/TextField';
@@ -35,7 +36,6 @@ class EditProfile extends Component{
   }
 
   saveChanges = () => {
-    var apiBaseUrl = "http://localhost:8080/";
     var modal = this;
 
     if(modal.paramsCheck()){

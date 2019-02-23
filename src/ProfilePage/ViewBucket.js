@@ -1,6 +1,7 @@
 //Various react components
 import React, { Component } from 'react';
 import axios from 'axios';
+import { apiBaseUrl } from '../global-string';
 
 //Material UI components
 import Add from '@material-ui/icons/Add';
@@ -47,7 +48,6 @@ class ViewBucket extends Component{
   }
 
   componentWillMount = () => {
-    var apiBaseUrl = "http://localhost:8080/users/";
     var modal = this;
 
     var id = modal.props.parentContext.state.id;
@@ -65,7 +65,7 @@ class ViewBucket extends Component{
       addItem:[]
     });
 
-    axios.get(apiBaseUrl+ownerId+"/buckets/"+id+"/items", {
+    axios.get(apiBaseUrl+"users/"+ownerId+"/buckets/"+id+"/items", {
       headers: {
         Authorization:'Bearer '+token
     }})
