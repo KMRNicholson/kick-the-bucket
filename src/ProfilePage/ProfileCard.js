@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
 import axios from 'axios';
+import { apiBaseUrl } from '../global-string';
 
 //Material UI components
 import Typography from '@material-ui/core/Typography';
@@ -54,7 +55,6 @@ class ProfileCard extends Component {
   };
 
   componentWillMount = () => {
-    var apiBaseUrl = "http://localhost:8080/";
     var page = this;
 
     var id = page.props.parentContext.state.id;

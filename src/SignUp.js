@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route,  Link } from 'react-router-dom';
 import axios from 'axios';
+import { apiBaseUrl } from './global-string';
 
 //Material UI Components
 import TextField from '@material-ui/core/TextField';
@@ -88,7 +89,6 @@ class SignUp extends Component {
   }
 
   signUp(){
-    var apiBaseUrl = "http://localhost:8080/";
     var page = this;
     if(this.paramsCheck() && this.passwordCheck()){
       var payload = {

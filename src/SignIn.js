@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route,  Link } from 'react-router-dom';
 import axios from 'axios';
+import { apiBaseUrl } from './global-string';
 
 //Project components
 import PublicBar from './PublicBar.js'
@@ -67,7 +68,6 @@ class SignIn extends Component {
   }
 
   signIn(){
-    var apiBaseUrl = "http://localhost:8080/";
     var page = this;
     if(this.paramsCheck()){
       var payload = {

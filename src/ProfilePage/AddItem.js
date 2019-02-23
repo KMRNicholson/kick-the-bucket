@@ -1,6 +1,7 @@
 //Various react components
 import React, { Component } from 'react';
 import axios from 'axios';
+import { apiBaseUrl } from '../global-string';
 
 //Material UI components
 import Button from '@material-ui/core/Button';
@@ -55,7 +56,6 @@ class AddItem extends Component {
   }
 
   addItem(){
-    var apiBaseUrl = "http://localhost:8080/users/";
     var token = this.props.parentContext.state.token;
     var newItem = this;
 
@@ -66,7 +66,7 @@ class AddItem extends Component {
         "link":newItem.state.link,
         "isComplete":false
       }
-      axios.post(apiBaseUrl+newItem.state.ownerId+'/buckets/'+newItem.state.bucketId+'/items', payload, {
+      axios.post(apiBaseUrl+"users/"+newItem.state.ownerId+'/buckets/'+newItem.state.bucketId+'/items', payload, {
         headers: {
           Authorization:'Bearer '+token
       }})
