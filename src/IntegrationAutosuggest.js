@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import deburr from 'lodash/deburr';
 import Autosuggest from 'react-autosuggest';
@@ -7,8 +8,8 @@ import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
-import Popper from '@material-ui/core/Popper';
 import { withStyles } from '@material-ui/core/styles';
+import { apiBaseUrl } from './global-string';
 
 const suggestions = [
   { label: 'Kohdy Nicholson' },
@@ -97,8 +98,17 @@ class IntegrationAutosuggest extends React.Component {
   }
   
   clickSuggestion = () => {
-    //Go to the profile page of user
-    console.log(this);
+    var page = this;
+    var id = page.props.parentContext.state.id;
+    var token = page.props.parentContext.state.token;
+    page.props.parentContext.props.parentContext.props.history.push({
+      pathname:"/profile",
+      state:{
+        id: id,
+        searchId: 61,
+        token: token
+      }
+    });
   }
   
   getSuggestions = (value) => {

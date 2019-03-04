@@ -13,11 +13,30 @@ class Profile extends Component {
       card:[],
       profileBuckets:[],
       id:[],
+      searchId:[],
       token:[]
     }
   }
 
-  componentWillMount(){
+  componentDidUpdate(prevProps){
+    if(this.props.location.state.searchId != prevProps.location.state.searchId) {
+      var card = [];
+      card.push(<ProfileCard parentContext={this} key="card"/>);
+
+      this.setState({
+        searchId:this.props.location.state.searchId,
+        card:card
+      });
+    }
+  }
+
+  componentWillMount = () => {
+    this.setState({
+      id:this.props.history.location.state.id,
+      searchId:this.props.history.location.state.searchId,
+      token:this.props.history.location.state.token
+    })
+
     var privateBar = [];
     privateBar.push(<PrivateBar parentContext={this} key="bar"/>);
 
@@ -30,9 +49,7 @@ class Profile extends Component {
     this.setState({
       privateBar:privateBar,
       card:card,
-      profileBuckets:profileBuckets,
-      id:this.props.history.location.state.id,
-      token:this.props.history.location.state.token
+      profileBuckets:profileBuckets
     })
   }
 

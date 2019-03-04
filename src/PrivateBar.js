@@ -6,7 +6,6 @@ import SearchBar from './IntegrationAutosuggest.js';
 
 //Material UI
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -81,6 +80,7 @@ class PrivateBar extends Component {
       pathname:"/profile",
       state:{
         id: page.state.id,
+        searchId: page.state.id,
         token: page.state.token
       }
     });
