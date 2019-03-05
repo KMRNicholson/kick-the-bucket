@@ -23,9 +23,13 @@ class Profile extends Component {
       var card = [];
       card.push(<ProfileCard parentContext={this} key="card"/>);
 
+      var profileBuckets = [];
+      profileBuckets.push(<ProfileBuckets parentContext={this} key="buckets"/>);
+
       this.setState({
         searchId:this.props.location.state.searchId,
-        card:card
+        card:card,
+        profileBuckets:profileBuckets
       });
     }
   }

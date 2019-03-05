@@ -112,18 +112,16 @@ class ProfileCard extends Component {
     var id = page.props.parentContext.state.id;
     var searchId = page.props.parentContext.state.searchId;
     var token = page.props.parentContext.state.token;
+    var button = []
 
     if(id != searchId){
-      var button = []
       button.push(<Button key="fbutton" color="primary" variant="contained" onClick={() => this.follow()}>Follow</Button>);
-      page.setState({
-        followButton:button
-      });
     }
     
     page.setState({
       id:id,
-      token:token
+      token:token,
+      followButton:button
     });
 
     axios.get(apiBaseUrl+'users/'+searchId+'/profile', {

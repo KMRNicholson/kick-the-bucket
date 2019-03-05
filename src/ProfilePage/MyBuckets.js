@@ -24,12 +24,58 @@ class MyBuckets extends Component {
     }
   }
 
-  componentWillMount = () =>{
-    var id = this.props.parentContext.props.parentContext.state.id;
-    var token = this.props.parentContext.props.parentContext.state.token;
+  componentWillReceiveProps(prevProps){
     var page = this;
+    var token = this.props.parentContext.props.parentContext.state.token;
+    var searchId = this.props.parentContext.props.parentContext.state.searchId;
 
-    axios.get(apiBaseUrl+'users/'+id+'/buckets', {
+    axios.get(apiBaseUrl+'users/'+searchId+'/buckets', {
+      headers: {
+        Authorization:'Bearer '+token
+      }
+    })
+    .then(function(response){
+      var buckets = [];
+      var count = 0;
+
+      response.data.sort(function(a, b){
+        return a.id - b.id;
+      })
+
+      response.data.forEach((element, index, array) => {
+        buckets.push(<Bucket 
+          name={element.name} 
+          isPublic={element.isPublic}
+          desc={element.description}
+          id={element.id}
+          ownerId={element.ownerId}
+          token={token}
+          key={"bucket"+count+1}
+          parentContext={page} />);
+        
+        count++;
+        
+        if(count === array.length) {
+          page.setState({
+            buckets:[]
+          })
+          page.setState({
+            buckets:buckets
+          });
+        }
+      })
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+  }
+
+  componentWillMount = () =>{
+    var page = this;
+    var token = this.props.parentContext.props.parentContext.state.token;
+    var searchId = this.props.parentContext.props.parentContext.state.searchId;
+
+    axios.get(apiBaseUrl+'users/'+searchId+'/buckets', {
       headers: {
         Authorization:'Bearer '+token
       }

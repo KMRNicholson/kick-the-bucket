@@ -31,7 +31,8 @@ class ProfileBuckets extends Component {
     this.state={
       component:[],
       open:false,
-      createBucket:[]
+      createBucket:[],
+      createBucketButton:[]
     }
   }
 
@@ -39,17 +40,47 @@ class ProfileBuckets extends Component {
     this.setState({ open: false });
   };
 
+  componentWillReceiveProps(){
+    var page = this;
+    var id = page.props.parentContext.state.id;
+    var searchId = page.props.parentContext.state.searchId;
+    var button = [];
+    var component = [];
+    
+    component.push(<MyBuckets parentContext={this} key="myBuckets"/>);
+
+    if(id == searchId){
+      button.push(<Button key="fbutton" color="primary" variant="contained" onClick={() => this.createBucket()}>Create Bucket!</Button>);
+    }
+
+    this.setState({
+      createBucketButton:button,
+      component:component
+    });
+  }
+
   componentWillMount(){
+    var page = this;
+    var id = page.props.parentContext.state.id;
+    var searchId = page.props.parentContext.state.searchId;
+
     var component = [];
     component.push(<MyBuckets parentContext={this} key="myBuckets"/>);
 
     var createBucket = [];
     createBucket.push(<CreateBucket parentContext={this} key="createBuckets"/>);
 
+    var button = [];
+
+    if(id == searchId){
+      button.push(<Button key="fbutton" color="primary" variant="contained" onClick={() => this.createBucket()}>Create Bucket!</Button>);
+    }
+
     this.setState({
       component:component,
       createBucket:createBucket,
-      open:false
+      open:false,
+      createBucketButton:button
     })
   }
 
@@ -93,9 +124,7 @@ class ProfileBuckets extends Component {
           <Button id="button-2" variant="contained" color="secondary" onClick={() => this.followedBuckets()}>
             Followed Buckets
           </Button>
-          <Button className="float-right" id="button-3" variant="contained" color="primary" onClick={() => this.createBucket()}>
-            Create Bucket
-          </Button>
+          {this.state.createBucketButton}
         </MuiThemeProvider>
         <Modal open={open} onClose={this.onCloseModal} center>
           {this.state.createBucket}
