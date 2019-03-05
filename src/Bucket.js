@@ -8,7 +8,8 @@ import { apiBaseUrl } from './global-string';
 import Typography from '@material-ui/core/Typography';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
-import Add from '@material-ui/icons/Add';
+import Follow from '@material-ui/icons/AddBox';
+import Unfollow from '@material-ui/icons/Clear';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import EditBucket from './ProfilePage/EditBucket.js'
@@ -40,6 +41,9 @@ class Bucket extends Component {
       id:[],
       ownerId:[],
       modal:[],
+      ownerUtil:[],
+      userId:[],
+      follow:[],
       open:false
     }
   }
@@ -79,15 +83,91 @@ class Bucket extends Component {
     });
   }
 
+  follow(){
+    var page = this;
+    var id = page.props.ownerId;
+    var userId = page.props.userId;
+    var bucketId = page.props.id;
+    var token = page.props.token;
+
+    axios.post(apiBaseUrl+'users/'+userId+'/following_bucket'+"?id="+bucketId, {}, {
+      headers: {
+        Authorization:'Bearer '+token
+      }
+    })
+    .then(function(response){
+      page.componentWillMount();
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+  }
+
+  unfollow(){
+    var page = this;
+    var id = page.props.ownerId;
+    var userId = page.props.userId;
+    var bucketId = page.props.id;
+    var token = page.props.token;
+
+    axios.delete(apiBaseUrl+'users/'+userId+'/following_bucket'+"?id="+bucketId, {
+      headers: {
+        Authorization:'Bearer '+token
+      }
+    })
+    .then(function(response){
+      page.componentWillMount();
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+  }
+
   componentWillMount(){
+    var page = this;
+    var ownerId = page.props.ownerId;
+    var userId = page.props.userId;
+    var bucketId = page.props.id;
+    var token = page.props.token;
+    var ownerUtil = [];
+    var follow = [];
+
+    if(this.props.ownerId == this.props.userId){
+      ownerUtil.push(<Edit key="edit" onClick={() => this.editBucket()} color="primary"/>);
+      ownerUtil.push(<Delete key="del" onClick={() => this.deleteBucket()}/>);
+    }else{
+      axios.get(apiBaseUrl+'users/'+userId+'/following_bucket', {
+        headers: {
+          Authorization:'Bearer '+token
+        }
+      })
+      .then(function(response){
+        if(response.data.find(x => x.id === bucketId)){
+          follow.push(<Unfollow key="ufbutton" color="primary" onClick={() => page.unfollow()}/>);
+        }else{
+          follow.push(<Follow key="fbutton" color="primary" onClick={() => page.follow()}/>);
+        }
+        page.setState({
+          follow:follow
+        })
+
+        //page.props.parentContext.componentWillMount();
+      })
+      .catch(function(error){
+        console.log(error);
+      });
+    }
+
     var avatar = Avatar; //Once Brandon sets up s3 image storage, we will load the avatar from there
     this.setState({
       avatar:avatar,
       name:this.props.name,
       isPublic:this.props.isPublic,
       desc:this.props.desc,
-      id:this.props.id,
-      ownerId:this.props.ownerId
+      id:bucketId,
+      ownerId:ownerId,
+      userId:userId,
+      ownerUtil:ownerUtil
     });
   }
 
@@ -100,9 +180,8 @@ class Bucket extends Component {
           {this.state.name}
         </Typography>
         <MuiThemeProvider theme={theme}>
-          <Add color="primary"/>
-          <Edit onClick={() => this.editBucket()} color="primary"/>
-          <Delete onClick={() => this.deleteBucket()}/>
+          {this.state.ownerUtil}
+          {this.state.follow}
         </MuiThemeProvider>
         <Modal open={open} onClose={this.onCloseModal} center>
           {this.state.modal}

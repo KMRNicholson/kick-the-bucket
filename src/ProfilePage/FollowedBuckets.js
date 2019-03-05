@@ -24,12 +24,13 @@ class FollowedBuckets extends Component {
     }
   }
 
-  componentWillMount(){
-    var id = this.props.parentContext.props.parentContext.state.id;
+  componentWillMount = () => {
     var token = this.props.parentContext.props.parentContext.state.token;
+    var id = this.props.parentContext.props.parentContext.state.id;
+    var searchId = this.props.parentContext.props.parentContext.state.searchId;
     var page = this;
 
-    axios.get(apiBaseUrl+'users/'+id+'/following_bucket', {
+    axios.get(apiBaseUrl+'users/'+searchId+'/following_bucket', {
       headers: {
         Authorization:'Bearer '+token
       }
@@ -42,7 +43,12 @@ class FollowedBuckets extends Component {
           name={element.name} 
           isPublic={element.isPublic}
           desc={element.description}
-          key={"bucket"+count+1} />);
+          id={element.id}
+          ownerId={element.ownerId}
+          userId={id}
+          token={token}
+          key={"bucket"+count+1}
+          parentContext={page} />);
         
         count++;
         

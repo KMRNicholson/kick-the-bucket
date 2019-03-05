@@ -24,12 +24,17 @@ class MyBuckets extends Component {
     }
   }
 
-  componentWillMount = () =>{
-    var id = this.props.parentContext.props.parentContext.state.id;
-    var token = this.props.parentContext.props.parentContext.state.token;
-    var page = this;
+  componentWillReceiveProps(prevProps){
+    this.fetchBuckets();
+  }
 
-    axios.get(apiBaseUrl+'users/'+id+'/buckets', {
+  fetchBuckets(){
+    var page = this;
+    var token = this.props.parentContext.props.parentContext.state.token;
+    var id = this.props.parentContext.props.parentContext.state.id;
+    var searchId = this.props.parentContext.props.parentContext.state.searchId;
+
+    axios.get(apiBaseUrl+'users/'+searchId+'/buckets', {
       headers: {
         Authorization:'Bearer '+token
       }
@@ -48,7 +53,8 @@ class MyBuckets extends Component {
           isPublic={element.isPublic}
           desc={element.description}
           id={element.id}
-          ownerId={element.ownerId}
+          userId={id}
+          ownerId={searchId}
           token={token}
           key={"bucket"+count+1}
           parentContext={page} />);
@@ -70,11 +76,15 @@ class MyBuckets extends Component {
     });
   }
 
+  componentWillMount = () =>{
+    this.fetchBuckets();
+  }
+
   render = () => {
     return (
       <div className="card-4 card-shadow-1">
         <Typography variant="title" style={styles}>
-          My Buckets
+          Buckets
         </Typography>
         {this.state.buckets}
       </div>

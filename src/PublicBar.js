@@ -35,7 +35,7 @@ class PublicBar extends Component {
           <Toolbar>
             <img src={BucketLogo2} alt="Bucket Logo" />
             <Typography variant="title" style={styles}>
-              <Link to="/" style={{ textDecoration: 'none' }}><div className="text-bar text-bold">Kick the Bucket</div></Link>
+              <Link to="/" style={{ textDecoration: 'none', color: '#222' }}><div className="text-bar text-bold">Kick the Bucket</div></Link>
             </Typography>
             <Link to="/signin" style={{ textDecoration: 'none' }}>
               <Button>

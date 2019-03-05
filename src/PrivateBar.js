@@ -2,12 +2,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
+import SearchBar from './IntegrationAutosuggest.js';
+
 //Material UI
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Person from '@material-ui/icons/Person';
 import Dashboard from '@material-ui/icons/Dashboard';
@@ -26,34 +28,7 @@ const theme = createMuiTheme({
 
 const styles = {
   flex:1,
-  margin:10,
-  search: {
-    position: 'relative',
-    borderRadius: 5,
-    marginRight: 5 * 2,
-    marginLeft: 0,
-    width: '100%'
-  },
-  searchIcon: {
-    width: 2 * 9,
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-    width: '100%',
-  },
-  inputInput: {
-    paddingTop: 5,
-    paddingRight: 5,
-    paddingBottom: 5,
-    paddingLeft: 5 * 10,
-    width: '100%'
-  }
+  margin:10
 };
 
 class PrivateBar extends Component {
@@ -78,6 +53,7 @@ class PrivateBar extends Component {
       pathname:"/profile",
       state:{
         id: page.state.id,
+        searchId: page.state.id,
         token: page.state.token
       }
     });
@@ -94,6 +70,24 @@ class PrivateBar extends Component {
     });
   }
 
+  renderInput(inputProps) {
+    const { InputProps, classes, ref, ...other } = inputProps;
+  
+    return (
+      <TextField
+        InputProps={{
+          inputRef: ref,
+          classes: {
+            root: classes.inputRoot,
+            input: classes.inputInput,
+          },
+          ...InputProps,
+        }}
+        {...other}
+      />
+    );
+  }
+
   render() {
     return (
       <MuiThemeProvider theme={theme}>
@@ -101,16 +95,10 @@ class PrivateBar extends Component {
           <Toolbar>
             <img src={BucketLogo2} alt="Bucket Logo"/>
             <Typography variant="title" style={styles}>
-              <Link to="/" style={{ textDecoration: 'none' }}><b>Kick the Bucket</b></Link>
+              <Link to="/" style={{ textDecoration: 'none', color: '#222' }}><b>Kick the Bucket</b></Link>
             </Typography>
-            <div className={styles.search}>
-              <div className={styles.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-              />
-            </div>
+            <SearchIcon/>
+            <SearchBar parentContext={this}/>
             <Button onClick={(event) => this.goToDashboard(event)}>
               Dashboard
               <Dashboard></Dashboard>
