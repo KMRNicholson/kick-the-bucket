@@ -44,6 +44,7 @@ class ProfileCard extends Component {
       token:'',
       followButton:[],
       editProfile:[],
+      settings:[],
       open: false
     }
   }
@@ -66,15 +67,19 @@ class ProfileCard extends Component {
     var searchId = page.props.parentContext.state.searchId;
     var token = page.props.parentContext.state.token;
     var button = [];
+    var settings = [];
 
     if(id != searchId){
       button.push(<Button key="fbutton" color="primary" variant="contained" onClick={() => this.follow()}>Follow</Button>);
+    }else{
+      settings.push(<Setting key="edituser" onClick={() => this.editProfile()} color="primary"/>)
     }
     
     page.setState({
       id:id,
       token:token,
-      followButton: button
+      followButton:button,
+      settings:settings
     });
 
     axios.get(apiBaseUrl+'users/'+searchId+'/profile', {
@@ -113,15 +118,19 @@ class ProfileCard extends Component {
     var searchId = page.props.parentContext.state.searchId;
     var token = page.props.parentContext.state.token;
     var button = []
+    var settings = [];
 
     if(id != searchId){
       button.push(<Button key="fbutton" color="primary" variant="contained" onClick={() => this.follow()}>Follow</Button>);
+    }else{
+      settings.push(<Setting key="edituser" onClick={() => this.editProfile()} color="primary"/>)
     }
     
     page.setState({
       id:id,
       token:token,
-      followButton:button
+      followButton:button,
+      settings:settings
     });
 
     axios.get(apiBaseUrl+'users/'+searchId+'/profile', {
@@ -163,7 +172,7 @@ class ProfileCard extends Component {
             <img src={Avatar} alt={"Avatar"} style={{width:250, height:250}} />
             <Typography variant="display1" style={styles}>
               {this.state.name}
-              <Setting onClick={() => this.editProfile()} color="primary"/>
+              {this.state.settings}
             </Typography>
             {this.state.followButton}
             <Typography variant="subheading" style={styles}>

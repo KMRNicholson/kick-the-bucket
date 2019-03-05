@@ -100,7 +100,6 @@ class Bucket extends Component {
           {this.state.name}
         </Typography>
         <MuiThemeProvider theme={theme}>
-          <Add color="primary"/>
           <Edit onClick={() => this.editBucket()} color="primary"/>
           <Delete onClick={() => this.deleteBucket()}/>
         </MuiThemeProvider>
