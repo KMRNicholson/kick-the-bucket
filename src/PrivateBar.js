@@ -6,7 +6,6 @@ import SearchBar from './IntegrationAutosuggest.js';
 
 //Material UI
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -29,34 +28,7 @@ const theme = createMuiTheme({
 
 const styles = {
   flex:1,
-  margin:10,
-  search: {
-    position: 'relative',
-    borderRadius: 5,
-    marginRight: 5 * 2,
-    marginLeft: 0,
-    width: '100%'
-  },
-  searchIcon: {
-    width: 2 * 9,
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-    width: '100%',
-  },
-  inputInput: {
-    paddingTop: 5,
-    paddingRight: 5,
-    paddingBottom: 5,
-    paddingLeft: 5 * 10,
-    width: '100%'
-  }
+  margin:10
 };
 
 class PrivateBar extends Component {
@@ -81,6 +53,7 @@ class PrivateBar extends Component {
       pathname:"/profile",
       state:{
         id: page.state.id,
+        searchId: page.state.id,
         token: page.state.token
       }
     });
@@ -122,7 +95,7 @@ class PrivateBar extends Component {
           <Toolbar>
             <img src={BucketLogo2} alt="Bucket Logo"/>
             <Typography variant="title" style={styles}>
-              <Link to="/" style={{ textDecoration: 'none' }}><b>Kick the Bucket</b></Link>
+              <Link to="/" style={{ textDecoration: 'none', color: '#222' }}><b>Kick the Bucket</b></Link>
             </Typography>
             <SearchIcon/>
             <SearchBar parentContext={this}/>
