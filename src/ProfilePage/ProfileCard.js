@@ -58,23 +58,53 @@ class ProfileCard extends Component {
   };
 
   follow = () => {
-    console.log("follow successful");
-  }
-
-  componentWillReceiveProps(){
     var page = this;
     var id = page.props.parentContext.state.id;
     var searchId = page.props.parentContext.state.searchId;
     var token = page.props.parentContext.state.token;
-    var button = [];
-    var settings = [];
 
-    if(id != searchId){
-      button.push(<Button key="fbutton" color="primary" variant="contained" onClick={() => this.follow()}>Follow</Button>);
-    }else{
-      settings.push(<Setting key="edituser" onClick={() => this.editProfile()} color="primary"/>)
-    }
-    
+    axios.post(apiBaseUrl+'users/'+id+'/following'+"?id="+searchId, {}, {
+      headers: {
+        Authorization:'Bearer '+token
+      }
+    })
+    .then(function(response){
+      page.componentWillMount();
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+  }
+
+  unfollow = () => {
+    var page = this;
+    var id = page.props.parentContext.state.id;
+    var searchId = page.props.parentContext.state.searchId;
+    var token = page.props.parentContext.state.token;
+
+    axios.delete(apiBaseUrl+'users/'+id+'/following'+"?id="+searchId, {
+      headers: {
+        Authorization:'Bearer '+token
+      }
+    })
+    .then(function(response){
+      page.componentWillMount();
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+  }
+
+  componentWillReceiveProps(){
+    this.fetchUserInfo();
+  }
+
+  finishRequest(button, settings){
+    var page = this;
+    var id = page.props.parentContext.state.id;
+    var searchId = page.props.parentContext.state.searchId;
+    var token = page.props.parentContext.state.token;
+
     page.setState({
       id:id,
       token:token,
@@ -112,7 +142,7 @@ class ProfileCard extends Component {
     });
   }
 
-  componentWillMount = () => {
+  fetchUserInfo(){
     var page = this;
     var id = page.props.parentContext.state.id;
     var searchId = page.props.parentContext.state.searchId;
@@ -121,46 +151,30 @@ class ProfileCard extends Component {
     var settings = [];
 
     if(id != searchId){
-      button.push(<Button key="fbutton" color="primary" variant="contained" onClick={() => this.follow()}>Follow</Button>);
+      axios.get(apiBaseUrl+'users/'+id+'/following', {
+        headers: {
+          Authorization:'Bearer '+token
+        }
+      })
+      .then(function(response){
+        if(response.data.find(x => x.id === searchId)){
+          button.push(<Button key="fbutton" color="primary" onClick={() => page.unfollow()}>Unfollow</Button>);
+        }else{
+          button.push(<Button key="fbutton" color="primary" variant="contained" onClick={() => page.follow()}>Follow</Button>)
+        }
+        page.finishRequest(button, settings);
+      })
+      .catch(function(error){
+        console.log(error);
+      });
     }else{
       settings.push(<Setting key="edituser" onClick={() => this.editProfile()} color="primary"/>)
+      this.finishRequest(button, settings);
     }
-    
-    page.setState({
-      id:id,
-      token:token,
-      followButton:button,
-      settings:settings
-    });
+  }
 
-    axios.get(apiBaseUrl+'users/'+searchId+'/profile', {
-      headers: {
-        Authorization:'Bearer '+token
-      }
-    })
-    .then(function(response){
-      var component = [];
-      component.push(<EditProfile
-        firstName={response.data.user.firstName} 
-        lastName={response.data.user.lastName}
-        email={response.data.user.email}
-        bio={"" + response.data.user.bio}
-        id={response.data.user.id}
-        token={token}
-        key="editProfile"
-        parentContext={page} 
-      />);
-      page.setState({
-        name:response.data.user.firstName + ' ' +response.data.user.lastName,
-        followers:response.data.followerCount,
-        following:response.data.followingCount,
-        bio:response.data.user.bio,
-        component:component
-      });
-    })
-    .catch(function(error){
-      console.log(error);
-    });
+  componentWillMount = () => {
+    this.fetchUserInfo();
   }
 
   render() {
