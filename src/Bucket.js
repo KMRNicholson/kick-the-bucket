@@ -40,6 +40,7 @@ class Bucket extends Component {
       ownerId:[],
       modal:[],
       ownerUtil:[],
+      searchId:[],
       open:false
     }
   }
@@ -81,7 +82,6 @@ class Bucket extends Component {
 
   componentWillMount(){
     var ownerUtil = []
-    console.log(this.props.searchId + " " + this.props.ownerId);
     if(this.props.searchId == this.props.ownerId){
       ownerUtil.push(<Edit key="edit" onClick={() => this.editBucket()} color="primary"/>);
       ownerUtil.push(<Delete key="del" onClick={() => this.deleteBucket()}/>);
@@ -94,7 +94,8 @@ class Bucket extends Component {
       desc:this.props.desc,
       id:this.props.id,
       ownerId:this.props.ownerId,
-      ownerUtil:ownerUtil
+      ownerUtil:ownerUtil,
+      searchId:this.props.searchId
     });
   }
 

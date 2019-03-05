@@ -32,6 +32,8 @@ class Item extends Component {
       bucketId:[],
       ownerId:[],
       mode:[],
+      ownerUtil:[],
+      checkbox:[],
       error:[]
     }
   }
@@ -140,28 +142,36 @@ class Item extends Component {
   }
 
   completeItem = name => event => {
-    event.persist();
-    var item = this;
-    var token = item.props.token;
+    if(this.props.searchId == this.props.ownerId){
+      event.persist();
+      var item = this;
+      var token = item.props.token;
 
-    var payload = {
-      isComplete:event.target.checked
+      var payload = {
+        isComplete:event.target.checked
+      }
+
+      axios.patch(apiBaseUrl+"users/"+item.state.ownerId+"/buckets/"+item.state.bucketId+"/items/"+item.state.id, payload, {
+        headers: {
+          Authorization:'Bearer '+token
+      }})
+      .then(function(response){
+        item.props.parentContext.componentWillMount();
+      })
+      .catch(function(error){
+        console.log(error)
+      })
     }
-
-    axios.patch(apiBaseUrl+"users/"+item.state.ownerId+"/buckets/"+item.state.bucketId+"/items/"+item.state.id, payload, {
-      headers: {
-        Authorization:'Bearer '+token
-    }})
-    .then(function(response){
-      item.props.parentContext.componentWillMount();
-    })
-    .catch(function(error){
-      console.log(error)
-    })
   }
 
   componentWillMount = () => {
     var display = [];
+    var ownerUtil = [];
+
+    if(this.props.searchId == this.props.ownerId){
+      ownerUtil.push(<Edit key="edit" onClick={() => this.editItem()} color="primary"/>);
+      ownerUtil.push(<Delete key="del" onClick={() => this.deleteItem()}/>);
+    }
 
     display.push(<Typography>
       {this.props.name}
@@ -177,6 +187,7 @@ class Item extends Component {
       id:this.props.id,
       bucketId:this.props.bucketId,
       ownerId:this.props.ownerId,
+      ownerUtil:ownerUtil,
       mode:display
     });
   }
@@ -192,8 +203,7 @@ class Item extends Component {
             color="primary"
           />
           {this.state.mode}
-          <Edit onClick={() => this.editItem()} color="primary"/>
-          <Delete onClick={() => this.deleteItem()}/>
+          {this.state.ownerUtil}
         </MuiThemeProvider>
       </div>
     );

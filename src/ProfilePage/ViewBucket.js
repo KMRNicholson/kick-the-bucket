@@ -32,6 +32,7 @@ class ViewBucket extends Component{
       items:[],
       ownerId:[],
       addItem:[],
+      addIcon:[],
       id:0,
       token:'',
       error:''
@@ -55,6 +56,12 @@ class ViewBucket extends Component{
     var name = modal.props.parentContext.state.name;
     var desc = modal.props.parentContext.state.desc;
     var ownerId = modal.props.parentContext.state.ownerId;
+    var searchId = modal.props.parentContext.state.searchId;
+    var addIcon = [];
+
+    if(ownerId == searchId){
+      addIcon.push(<Add key="addIcon" onClick={() => this.addItem()} color="primary"/>);
+    }
     
     modal.setState({
       id:id,
@@ -62,7 +69,8 @@ class ViewBucket extends Component{
       token:token,
       name:name,
       desc:desc,
-      addItem:[]
+      addItem:[],
+      addIcon:addIcon
     });
 
     axios.get(apiBaseUrl+"users/"+ownerId+"/buckets/"+id+"/items", {
@@ -84,6 +92,7 @@ class ViewBucket extends Component{
           id={element.id}
           ownerId={ownerId}
           bucketId={element.parentId}
+          searchId={searchId}
           token={token}
           key={"item"+count+1}
           parentContext={modal} />);
@@ -110,7 +119,7 @@ class ViewBucket extends Component{
           {this.state.items}
           {this.state.addItem}
           <br/>
-          <Add onClick={() => this.addItem()} color="primary"/>
+          {this.state.addIcon}
       </div>
     );
   }
