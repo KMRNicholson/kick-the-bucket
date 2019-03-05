@@ -119,7 +119,7 @@ class ProfileBuckets extends Component {
       <div className="ProfileBuckets">
         <MuiThemeProvider theme={theme}>
           <Button id="button-2" variant="contained" color="secondary" onClick={() => this.myBuckets()}>
-            My Buckets
+            Buckets
           </Button>
           <Button id="button-2" variant="contained" color="secondary" onClick={() => this.followedBuckets()}>
             Followed Buckets

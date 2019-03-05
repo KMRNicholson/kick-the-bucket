@@ -53,8 +53,8 @@ class MyBuckets extends Component {
           isPublic={element.isPublic}
           desc={element.description}
           id={element.id}
-          searchId={searchId}
-          ownerId={id}
+          userId={id}
+          ownerId={searchId}
           token={token}
           key={"bucket"+count+1}
           parentContext={page} />);
@@ -84,7 +84,7 @@ class MyBuckets extends Component {
     return (
       <div className="card-4 card-shadow-1">
         <Typography variant="title" style={styles}>
-          My Buckets
+          Buckets
         </Typography>
         {this.state.buckets}
       </div>

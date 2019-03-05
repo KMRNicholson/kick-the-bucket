@@ -142,7 +142,7 @@ class Item extends Component {
   }
 
   completeItem = name => event => {
-    if(this.props.searchId == this.props.ownerId){
+    if(this.props.userId == this.props.ownerId){
       event.persist();
       var item = this;
       var token = item.props.token;
@@ -168,7 +168,7 @@ class Item extends Component {
     var display = [];
     var ownerUtil = [];
 
-    if(this.props.searchId == this.props.ownerId){
+    if(this.props.userId == this.props.ownerId){
       ownerUtil.push(<Edit key="edit" onClick={() => this.editItem()} color="primary"/>);
       ownerUtil.push(<Delete key="del" onClick={() => this.deleteItem()}/>);
     }

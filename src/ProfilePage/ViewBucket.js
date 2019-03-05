@@ -42,7 +42,7 @@ class ViewBucket extends Component{
   addItem = () => {
     var bucket = this;
     var addItem = []
-    addItem.push(<AddItem parentContext={this} key="addItem"/>)
+    addItem.push(<AddItem color="primary" parentContext={this} key="addItem"/>)
     bucket.setState({
       addItem:addItem
     })
@@ -55,12 +55,12 @@ class ViewBucket extends Component{
     var token = modal.props.parentContext.props.token;
     var name = modal.props.parentContext.state.name;
     var desc = modal.props.parentContext.state.desc;
-    var ownerId = modal.props.parentContext.state.ownerId;
-    var searchId = modal.props.parentContext.state.searchId;
+    var ownerId = modal.props.parentContext.props.ownerId;
+    var userId = modal.props.parentContext.state.userId;
     var addIcon = [];
 
-    if(ownerId == searchId){
-      addIcon.push(<Add key="addIcon" onClick={() => this.addItem()} color="primary"/>);
+    if(ownerId == userId){
+      addIcon.push(<Add key="addIcon" color="primary" onClick={() => this.addItem()} color="primary"/>);
     }
     
     modal.setState({
@@ -92,7 +92,7 @@ class ViewBucket extends Component{
           id={element.id}
           ownerId={ownerId}
           bucketId={element.parentId}
-          searchId={searchId}
+          userId={userId}
           token={token}
           key={"item"+count+1}
           parentContext={modal} />);
