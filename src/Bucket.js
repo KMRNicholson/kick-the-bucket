@@ -8,7 +8,6 @@ import { apiBaseUrl } from './global-string';
 import Typography from '@material-ui/core/Typography';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
-import Add from '@material-ui/icons/Add';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import EditBucket from './ProfilePage/EditBucket.js'
@@ -40,6 +39,7 @@ class Bucket extends Component {
       id:[],
       ownerId:[],
       modal:[],
+      ownerUtil:[],
       open:false
     }
   }
@@ -80,6 +80,12 @@ class Bucket extends Component {
   }
 
   componentWillMount(){
+    var ownerUtil = []
+    console.log(this.props.searchId + " " + this.props.ownerId);
+    if(this.props.searchId == this.props.ownerId){
+      ownerUtil.push(<Edit key="edit" onClick={() => this.editBucket()} color="primary"/>);
+      ownerUtil.push(<Delete key="del" onClick={() => this.deleteBucket()}/>);
+    }
     var avatar = Avatar; //Once Brandon sets up s3 image storage, we will load the avatar from there
     this.setState({
       avatar:avatar,
@@ -87,7 +93,8 @@ class Bucket extends Component {
       isPublic:this.props.isPublic,
       desc:this.props.desc,
       id:this.props.id,
-      ownerId:this.props.ownerId
+      ownerId:this.props.ownerId,
+      ownerUtil:ownerUtil
     });
   }
 
@@ -100,8 +107,7 @@ class Bucket extends Component {
           {this.state.name}
         </Typography>
         <MuiThemeProvider theme={theme}>
-          <Edit onClick={() => this.editBucket()} color="primary"/>
-          <Delete onClick={() => this.deleteBucket()}/>
+          {this.state.ownerUtil}
         </MuiThemeProvider>
         <Modal open={open} onClose={this.onCloseModal} center>
           {this.state.modal}
