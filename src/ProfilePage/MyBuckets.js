@@ -34,6 +34,10 @@ class MyBuckets extends Component {
     var id = this.props.parentContext.props.parentContext.state.id;
     var searchId = this.props.parentContext.props.parentContext.state.searchId;
 
+    page.setState({
+      buckets:[]
+    })
+
     axios.get(apiBaseUrl+'users/'+searchId+'/buckets', {
       headers: {
         Authorization:'Bearer '+token
@@ -46,7 +50,7 @@ class MyBuckets extends Component {
       response.data.sort(function(a, b){
         return a.id - b.id;
       })
-
+      
       response.data.forEach((element, index, array) => {
         buckets.push(<Bucket 
           name={element.name} 
@@ -62,9 +66,6 @@ class MyBuckets extends Component {
         count++;
         
         if(count === array.length) {
-          page.setState({
-            buckets:[]
-          })
           page.setState({
             buckets:buckets
           });

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
+import PropTypes, { element } from 'prop-types';
 import deburr from 'lodash/deburr';
 import Autosuggest from 'react-autosuggest';
 import match from 'autosuggest-highlight/match';
@@ -10,15 +10,6 @@ import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import { apiBaseUrl } from './global-string';
-
-const suggestions = [
-  { label: 'Kohdy Nicholson' },
-  { label: 'Megan Doherty' },
-  { label: 'Brandon Richardson' },
-  { label: 'Tyler Sargeant' },
-  { label: 'Sam Westfield' },
-  { label: 'Yvegen Biletskiy' }
-];
 
 const styles = theme => ({
   root: {
@@ -79,7 +70,7 @@ class IntegrationAutosuggest extends React.Component {
     const parts = parse(suggestion.label, matches);
   
     return (
-      <MenuItem selected={isHighlighted} component="div" onClick={()=>this.clickSuggestion()}>
+      <MenuItem selected={isHighlighted} component="div" onClick={()=>this.clickSuggestion(suggestion)}>
         <div>
           {parts.map((part, index) =>
             part.highlight ? (
@@ -97,7 +88,7 @@ class IntegrationAutosuggest extends React.Component {
     );
   }
   
-  clickSuggestion = () => {
+  clickSuggestion = (user) => {
     var page = this;
     var id = page.props.parentContext.state.id;
     var token = page.props.parentContext.state.token;
@@ -105,38 +96,40 @@ class IntegrationAutosuggest extends React.Component {
       pathname:"/profile",
       state:{
         id: id,
-        searchId: 61,
+        searchId: user.id,
         token: token
       }
     });
   }
   
-  getSuggestions = (value) => {
-    const inputValue = deburr(value.trim()).toLowerCase();
-    const inputLength = inputValue.length;
-    let count = 0;
-  
-    return inputLength === 0
-      ? []
-      : suggestions.filter(suggestion => {
-          const keep =
-            count < 5 && suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
-  
-          if (keep) {
-            count += 1;
-          }
-  
-          return keep;
-        });
-  }
-  
   getSuggestionValue(suggestion) {
     return suggestion.label;
   }
-  
+
   handleSuggestionsFetchRequested = ({ value }) => {
-    this.setState({
-      suggestions: this.getSuggestions(value),
+    var page = this;
+    var token = page.props.parentContext.state.token;
+    var users = [];
+    axios.get(apiBaseUrl+"search?query="+value+"&page=0&size=10", {
+      headers: {
+        Authorization:'Bearer '+token
+      }
+    })
+    .then(function(response){
+      var count = 0;
+      Array.prototype.forEach.call(response.data.users, (element, index, array) => {
+        users.push({label: element.firstName+" "+element.lastName, id: element.id});
+        count++;
+        
+        if(count === array.length) {
+          page.setState({
+            suggestions: users,
+          });
+        }
+      })
+    })
+    .catch(function(error){
+      console.log(error);
     });
   };
 
@@ -151,10 +144,6 @@ class IntegrationAutosuggest extends React.Component {
       [name]: newValue,
     });
   };
-
-  handleClick = () => {
-    console.log(this);
-  }
 
   render() {
     const { classes } = this.props;
