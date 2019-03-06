@@ -30,6 +30,10 @@ class FollowedBuckets extends Component {
     var searchId = this.props.parentContext.props.parentContext.state.searchId;
     var page = this;
 
+    page.setState({
+      buckets:[]
+    })
+
     axios.get(apiBaseUrl+'users/'+searchId+'/following_bucket', {
       headers: {
         Authorization:'Bearer '+token
