@@ -91,7 +91,7 @@ class CreateBucket extends Component {
   componentWillMount(){
     var id = this.props.parentContext.state.id;
     var token = this.props.parentContext.state.token;
-    
+
     this.setState({
       id:id,
       token:token
@@ -110,11 +110,15 @@ class CreateBucket extends Component {
 
   render() {
     return (
-      <div>
+        <div className="extra-padding">
           <MuiThemeProvider theme={theme}>
+
             <Typography variant="title" style={styles}>
+            <div className="text-1 text-medium">
               Create Bucket
+              </div>
             </Typography>
+
             <TextField
               required
               id="nameField"
@@ -122,6 +126,7 @@ class CreateBucket extends Component {
               value={this.state.name}
               onChange={this.handleChange('name')}
               style={styles} />
+
             <TextField
               required
               id="desc"
@@ -129,6 +134,7 @@ class CreateBucket extends Component {
               value={this.state.description}
               onChange={this.handleChange('description')}
               style={styles} />
+
             <FormControlLabel
               control={
                 <Switch
@@ -140,9 +146,13 @@ class CreateBucket extends Component {
               }
               label="Public"
             />
-            <Button id="button-3" variant="contained" color="primary" onClick={(event) => this.createBucket(event)}>
+
+            <Button id="button-5" variant="contained" color="primary" onClick={(event) => this.createBucket(event)}>
+            <div className="text-1">
               Create
+              </div>
             </Button>
+
           </MuiThemeProvider>
           <div className="mg-xs error-color">{this.state.error}</div>
       </div>

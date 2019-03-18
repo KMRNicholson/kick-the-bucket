@@ -60,7 +60,7 @@ class ProfileBuckets extends Component {
 
     var component = [];
     component.push(<MyBuckets parentContext={this} key="myBuckets"/>);
-    
+
     this.setState({
       component:component
     })
@@ -70,7 +70,7 @@ class ProfileBuckets extends Component {
     this.setState({
       component:[]
     })
-    
+
     var component = [];
     component.push(<FollowedBuckets parentContext={this} key="followedBuckets"/>);
     this.setState({
@@ -88,19 +88,25 @@ class ProfileBuckets extends Component {
       <div className="ProfileBuckets">
         <MuiThemeProvider theme={theme}>
           <Button id="button-2" variant="contained" color="secondary" onClick={() => this.myBuckets()}>
+          <div className ="text-2 text-medium ">
             My Buckets
+            </div>
           </Button>
           <Button id="button-2" variant="contained" color="secondary" onClick={() => this.followedBuckets()}>
+          <div className ="text-2 text-medium ">
             Followed Buckets
+            </div>
           </Button>
           <Button className="float-right" id="button-3" variant="contained" color="primary" onClick={() => this.createBucket()}>
+          <div className ="text-2 text-medium">
             Create Bucket
+            </div>
           </Button>
         </MuiThemeProvider>
         <Modal open={open} onClose={this.onCloseModal} center>
           {this.state.createBucket}
         </Modal>
-        {this.state.component}   
+        {this.state.component}
       </div>
     );
   }

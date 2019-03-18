@@ -6,20 +6,23 @@ import { apiBaseUrl } from '../global-string';
 //Material UI components
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
 
 //Styling
 import './Profile.css';
+
+const styles = {
+  margin:10
+}
 
 const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#ECB030',
     },
-    secondary: blue,
   },
 });
 
@@ -66,7 +69,7 @@ class EditBucket extends Component{
 
   paramsCheck(){
     var results;
-    if(this.state.name.trim().length>0 && 
+    if(this.state.name.trim().length>0 &&
       this.state.desc.trim().length>0)
     {
       results = true;
@@ -88,7 +91,7 @@ class EditBucket extends Component{
     var desc = modal.props.parentContext.state.desc;
     var isPublic = modal.props.parentContext.state.isPublic;
     var ownerId = modal.props.parentContext.state.ownerId;
-    
+
     modal.setState({
       id:id,
       ownerId:ownerId,
@@ -113,9 +116,17 @@ class EditBucket extends Component{
 
   render() {
     return (
-      <div>
-        <form>
+      <div className="extra-padding">
+
           <MuiThemeProvider theme={theme}>
+
+          <Typography variant="title" style={styles}>
+            <div className="text-1 text-medium small-padding">
+                <b>Edit Bucket</b>
+            </div>
+          </Typography>
+
+
             <TextField
               required
               id="name"
@@ -123,7 +134,9 @@ class EditBucket extends Component{
               value={this.state.name}
               onChange={this.handleChange('name')}
               margin="normal"
+              style={styles}
             />
+
             <TextField
               required
               id="desc"
@@ -131,7 +144,10 @@ class EditBucket extends Component{
               value={this.state.desc}
               onChange={this.handleChange('desc')}
               margin="normal"
+              style={styles}
             />
+
+            <div className="small-padding">
             <FormControlLabel
               control={
                 <Switch
@@ -141,14 +157,20 @@ class EditBucket extends Component{
                   color="primary"
                 />
               }
-              label="Public"
-            />
-            <Button className="float-right" id="save-button" variant="contained" color="primary" onClick={() => this.saveChanges()}>
-              Save
+              label="Public"/>
+              </div>
+
+
+            <Button className="float-right" id="button-6" variant="contained" color="primary" onClick={() => this.saveChanges()}>
+              <div className="text-1">
+                Save
+                </div>
             </Button>
-            <div className="mg-xs error-color">{this.state.error}</div>{this.state.error}
+
+
+            <div className="mg-xs error-color">{this.state.error}</div>
           </MuiThemeProvider>
-        </form>
+
       </div>
     );
   }

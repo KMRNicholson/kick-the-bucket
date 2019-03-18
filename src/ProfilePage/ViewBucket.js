@@ -55,7 +55,7 @@ class ViewBucket extends Component{
     var name = modal.props.parentContext.state.name;
     var desc = modal.props.parentContext.state.desc;
     var ownerId = modal.props.parentContext.state.ownerId;
-    
+
     modal.setState({
       id:id,
       ownerId:ownerId,
@@ -76,8 +76,8 @@ class ViewBucket extends Component{
       })
       var count = 0;
       response.data.forEach((element, index, array) => {
-        items.push(<Item 
-          name={element.name} 
+        items.push(<Item
+          name={element.name}
           isComplete={element.complete}
           desc={element.description}
           link={element.link}
@@ -87,9 +87,9 @@ class ViewBucket extends Component{
           token={token}
           key={"item"+count+1}
           parentContext={modal} />);
-        
+
         count++;
-        
+
         if(count === array.length) {
           modal.setState({
             items:items
@@ -104,12 +104,16 @@ class ViewBucket extends Component{
 
   render() {
     return (
-      <div>
+      <div className="text-2">
+
           {this.state.name}
-          {this.state.desc}
-          {this.state.items}
-          {this.state.addItem}
           <br/>
+          {this.state.desc}
+          
+          {this.state.items}
+
+          {this.state.addItem}
+
           <Add onClick={() => this.addItem()} color="primary"/>
       </div>
     );
