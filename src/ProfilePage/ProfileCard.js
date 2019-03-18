@@ -120,14 +120,14 @@ class ProfileCard extends Component {
     .then(function(response){
       var component = [];
       component.push(<EditProfile
-        firstName={response.data.user.firstName} 
+        firstName={response.data.user.firstName}
         lastName={response.data.user.lastName}
         email={response.data.user.email}
         bio={"" + response.data.user.bio}
         id={response.data.user.id}
         token={token}
         key="editProfile"
-        parentContext={page} 
+        parentContext={page}
       />);
       page.setState({
         name:response.data.user.firstName + ' ' +response.data.user.lastName,
@@ -183,17 +183,23 @@ class ProfileCard extends Component {
       <div>
         <form className="card-3 card-shadow-1 ta-center float-left">
           <MuiThemeProvider theme={theme}>
-            <img src={Avatar} alt={"Avatar"} style={{width:250, height:250}} />
+            <img src={Avatar} alt={"Avatar"} style={{width:250, height:250}} class="avatar" />
             <Typography variant="display1" style={styles}>
-              {this.state.name}
-              {this.state.settings}
+            <div className="text-1">
+                {this.state.name}
+            </div>
+            {this.state.settings}
             </Typography>
             {this.state.followButton}
             <Typography variant="subheading" style={styles}>
-              Followers: {this.state.followers}   Following: {this.state.following}
+              <div className="text-1 text-smaller">
+                <b>Followers: {this.state.followers}   Following: {this.state.following}</b>
+              </div>
             </Typography>
             <Typography variant="subheading" style={styles}>
+            <div className="text-2 text-smaller">
               {this.state.bio}
+              </div>
             </Typography>
           </MuiThemeProvider>
         </form>

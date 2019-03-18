@@ -4,7 +4,7 @@ import Modal from 'react-responsive-modal';
 import axios from 'axios';
 import { apiBaseUrl } from './global-string';
 
-//Material UI 
+//Material UI
 import Typography from '@material-ui/core/Typography';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
@@ -17,6 +17,10 @@ import ViewBucket from './ProfilePage/ViewBucket.js'
 
 //Images
 import Avatar from './ProfilePage/bucket-3.png'
+
+// Styling
+//Styling
+import './App.css';
 
 const styles = {
   margin:10
