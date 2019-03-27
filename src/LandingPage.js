@@ -23,19 +23,18 @@ class LandingPage extends Component {
   render() {
     return(
       <div>
+      
         <PublicBar/>
         <Carousel>
           <img src={CarouselImage1} alt={"Carousel 1"} />
           <img src={CarouselImage2} alt={"Carousel 2"} />
           <img src={CarouselImage3} alt={"Carousel 3"} />
         </Carousel>
-  
+
         <div className="float-left">
         <div className="float-left mg-sm move-down">
           <img src={BucketKick} alt={"Bucket Kick"} />
         </div>
-  
-  
           <div className="text-container text-bold text-medium mg-sm font-colour">
           <div className="text-large text-header text-bold">
             <p>OUR MISSION</p>
@@ -47,7 +46,7 @@ class LandingPage extends Component {
             </p>
           </div>
         </div>
-  
+
           <div className="float-right">
           <div className="float-right mg-sm">
             <img src={BucketIdea} alt={"Bucket Idea"} />

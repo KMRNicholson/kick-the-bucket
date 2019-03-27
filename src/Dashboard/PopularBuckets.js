@@ -7,6 +7,11 @@ import Typography from '@material-ui/core/Typography';
 //Styling
 import './Dashboard.css';
 
+//Images
+import Travel from './travel.png'
+import Friend from './friends.png'
+
+
 const styles = {
   margin:10
 }
@@ -30,12 +35,52 @@ class PopularBuckets extends Component {
   render() {
     return (
       <div>
-        <form className="card-6 card-shadow-1">
+        <form className="card-7 card-shadow-1">
           <Typography variant="title" style={styles}>
-            <div className="text-big font-colour">
-            <b>Popular Buckets</b>
+            <div className="text-big font-colour text-1">
+              <b>Popular Buckets</b>
             </div>
           </Typography>
+          <br/>
+
+          <div className="float-left">
+
+          <div className = "float-left mg-sm mode-down">
+            <img src={Travel} alt={"Travel"} style={{width:450, height:370}} />
+            </div>
+
+              <div className="text-large text-header text-bold">
+                <p>Best Travel Tips: 2019 Edition</p>
+              </div>
+                <p>
+                  tips tips tips tips tips tips tips TIPS
+                  tips tips tips tips tips tips tips TIPS
+                  tips tips tips tips tips tips tips TIPS
+                  tips tips tips tips tips tips tips TIPS
+
+                </p>
+
+          </div>
+
+
+          <div className = "float-right">
+          <div className="float-right mg-sm">
+              <img src={Friend} alt={"Friend"} style={{width:450, height:370}}/>
+          </div>
+
+          <div className="text-large text-header text-bold">
+            <p>Best Travel Tips: 2019 Edition</p>
+          </div>
+            <p>
+              tips tips tips tips tips tips tips TIPS
+              tips tips tips tips tips tips tips TIPS
+              tips tips tips tips tips tips tips TIPS
+              tips tips tips tips tips tips tips TIPS
+
+            </p>
+          </div>
+
+
         </form>
       </div>
     );

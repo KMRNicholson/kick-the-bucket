@@ -12,6 +12,8 @@ import Delete from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+//Styling
+import './App.css';
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -52,12 +54,14 @@ class Item extends Component {
         label="Name"
         onChange={this.handleChange('name')}
       />
+
       <TextField
         required
         id="desc"
         label="Description"
         onChange={this.handleChange('desc')}
       />
+
       <TextField
         required
         id="link"
@@ -79,7 +83,7 @@ class Item extends Component {
 
   paramsCheck(){
     var results;
-    if(this.state.name.trim().length>0 && 
+    if(this.state.name.trim().length>0 &&
       this.state.desc.trim().length>0 &&
       this.state.link.trim().length>0)
     {
@@ -103,8 +107,8 @@ class Item extends Component {
         "description":item.state.desc,
         "link":item.state.link
       }
-      axios.patch(apiBaseUrl+"users/"+item.state.ownerId+"/buckets/"+item.state.bucketId+"/items/"+item.state.id, 
-        payload, 
+      axios.patch(apiBaseUrl+"users/"+item.state.ownerId+"/buckets/"+item.state.bucketId+"/items/"+item.state.id,
+        payload,
         { headers: {
           Authorization:'Bearer '+token
       }})
@@ -163,11 +167,17 @@ class Item extends Component {
   componentWillMount = () => {
     var display = [];
 
-    display.push(<Typography>
-      {this.props.name}
+    display.push(
+      <div className ="text-better">
+      <Typography>
+      <pre></pre>
+      <b>{this.props.name}</b>
       {this.props.desc}
       {this.props.link}
-    </Typography>);
+
+    </Typography>
+  </div>)
+    ;
 
     this.setState({
       name:this.props.name,
@@ -183,19 +193,32 @@ class Item extends Component {
 
   render(){
     return (
-      <div>
+
         <MuiThemeProvider theme={theme}>
+        <div className="text-better new-line">
+        <label>
           <Checkbox
             checked={this.state.isComplete}
             onChange={this.completeItem('isComplete')}
             value="isComplete"
             color="primary"
           />
-          {this.state.mode}
+        <b>{this.state.name}</b>
+        {"   "}
+
+        {this.state.desc}
+        {"   "}
+        {this.state.link}
+        {"   "}
+          </label>
           <Edit onClick={() => this.editItem()} color="primary"/>
           <Delete onClick={() => this.deleteItem()}/>
+       </div>
+
+
+
         </MuiThemeProvider>
-      </div>
+
     );
   }
 }

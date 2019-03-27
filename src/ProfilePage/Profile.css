@@ -1,3 +1,26 @@
+.img-center{
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+.center{
+  text-align: center;
+}
+.no-wrap{
+  word-wrap: break-word;
+}
+.text-better{
+  overflow: hidden;
+  display: inline-block;
+}
+.center-all{
+    margin:auto;
+  }
+
+.new-line{
+  display:block;
+}
+
 .float-left {
   float: left;
 }
@@ -6,6 +29,9 @@
   float: right;
 }
 
+.float-middle {
+  display: inline-block;
+}
 .card-shadow-1 {
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
@@ -26,12 +52,20 @@
   font-size: 1.25em;
 }
 
+.text-large {
+  font-size: 2em;
+}
+
 .text-1{
   font-family: 'Archivo', sans-serif;
 }
 
 .text-2{
   font-family: 'Karla', sans-serif;
+}
+
+.text-center{
+  text-align: center;
 }
 
 .avatar {
@@ -53,11 +87,17 @@
   padding: 1.5em;
 }
 
+.icon-fix{
+  margin-left: 2.5em;
+}
+.top-margin-profile{
+  margin-top: 5em;
+}
 .card-3 {
   background-color: #FCFCFC;
   border-radius: .5em;
   display: inline-block;
-  height: 32.25em;
+  height: 41.50em;
   margin: 1em;
   margin-top: 4em;
   padding: 1em;
@@ -68,7 +108,8 @@
 .card-4 {
   background-color: #FCFCFC;
   border-radius: .5em;
-  height: 27.5em;
+  min-height: 27.5em;
+  height: 37em;
   margin: 1.5em;
   margin-top: 1em;
   padding: 1em;

@@ -41,7 +41,7 @@ class AddItem extends Component {
 
   paramsCheck(){
     var results;
-    if(this.state.name.trim().length>0 && 
+    if(this.state.name.trim().length>0 &&
       this.state.description.trim().length>0 &&
       this.state.link.trim().length>0)
     {
@@ -82,7 +82,7 @@ class AddItem extends Component {
   componentWillMount(){
     var bucketId = this.props.parentContext.state.id;
     var ownerId = this.props.parentContext.state.ownerId;
-    
+
     this.setState({
       bucketId:bucketId,
       ownerId:ownerId

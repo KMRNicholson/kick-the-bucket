@@ -30,12 +30,27 @@ body {
   font-size: large;
 }
 
+.center-image{
+  vertical-align: middle;
+}
+.no-wrap{
+  word-wrap: break-word;
+}
+.text-better{
+  overflow: hidden;
+  display: inline-block;
+}
+
 .float-left {
   float: left;
 }
 
 .float-right {
   float: right;
+}
+
+.float-middle {
+  float: none;
 }
 
 .font-colour{
@@ -97,6 +112,11 @@ body {
 .text-bar{
   font-family: 'Karla', sans-serif;
 }
+
+.text-1{
+  font-family: 'Archivo', sans-serif;
+}
+
 .card-1 {
   background-color: #F2F2F2;
   border-radius: .5em;
