@@ -183,7 +183,10 @@ class ProfileCard extends Component {
       <div>
         <form className="card-3 card-shadow-1 ta-center float-left">
           <MuiThemeProvider theme={theme}>
-            <img src={Avatar} alt={"Avatar"} style={{width:250, height:250}} class="avatar" />
+
+          <div className = "top-margin-profile">
+
+            <img src={Avatar} alt={"Avatar"} style={{width:275, height:275}} class="avatar" />
             <Typography variant="display1" style={styles}>
             <div className="text-1">
                 {this.state.name}
@@ -196,16 +199,20 @@ class ProfileCard extends Component {
                 <b>Followers: {this.state.followers}   Following: {this.state.following}</b>
               </div>
             </Typography>
+
             <Typography variant="subheading" style={styles}>
-            <div className="text-2 text-smaller">
-              {this.state.bio}
+              <div className="text-2 text-smaller">
+                {this.state.bio}
               </div>
             </Typography>
+</div>
           </MuiThemeProvider>
+
         </form>
         <Modal open={open} onClose={this.onCloseModal} center>
           {this.state.component}
         </Modal>
+
       </div>
     );
   }

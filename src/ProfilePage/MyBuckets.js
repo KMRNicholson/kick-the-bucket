@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { apiBaseUrl } from '../global-string';
+import { SizeMe } from 'react-sizeme';
 
 //Project imports
 import Bucket from '../Bucket.js'
@@ -52,7 +53,11 @@ class MyBuckets extends Component {
       })
       
       response.data.forEach((element, index, array) => {
-        buckets.push(<Bucket
+        buckets.push(
+          <div className = "float-left">
+          <div className = "extra-padding">
+
+          <Bucket
           name={element.name}
           isPublic={element.isPublic}
           desc={element.description}
@@ -61,7 +66,10 @@ class MyBuckets extends Component {
           ownerId={searchId}
           token={token}
           key={"bucket"+count+1}
-          parentContext={page} />);
+          parentContext={page} />
+          </div>
+        </div>
+        );
 
         count++;
 
@@ -89,7 +97,9 @@ class MyBuckets extends Component {
             Buckets
           </div>
         </Typography>
+
         {this.state.buckets}
+
       </div>
     );
   }

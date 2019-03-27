@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Person from '@material-ui/icons/Person';
 import Create from '@material-ui/icons/Create';
+import { shadows } from '@material-ui/system';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 //Images
@@ -26,7 +27,6 @@ const styles = {
   flex:1,
   margin:10
 }
-
 class PublicBar extends Component {
   render() {
     return (

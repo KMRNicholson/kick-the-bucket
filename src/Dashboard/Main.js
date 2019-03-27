@@ -18,12 +18,10 @@ class Main extends Component {
     var popular = [];
     popular.push(<PopularBuckets parentContext={this} key="pb"/>);
 
-    var news = [];
-    news.push(<Newsfeed parentContext={this} key="news"/>);
+
 
     this.setState({
       popular:popular,
-      news:news
     })
   }
 
@@ -31,7 +29,6 @@ class Main extends Component {
     return (
       <div className="Sidebar">
         {this.state.popular}
-        {this.state.news} 
       </div>
     );
   }

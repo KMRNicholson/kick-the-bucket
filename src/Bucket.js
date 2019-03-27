@@ -178,19 +178,37 @@ class Bucket extends Component {
   render(){
     const { open } = this.state;
     return (
-      <div>
-        <img src={this.state.avatar} style={{width:50, height:50}} alt={"Bucket"} />
+      <div className = "center-all">
+
+      <div className = "small-padding img-center float-middle">
+        <img src={this.state.avatar} style={{width:135, height:135}} alt={"Bucket"} />
+      </div>
+
         <Typography onClick={() => this.viewBucket()} style={styles}>
-          {this.state.name}
+          <div className ="text-1 text-medium text-bold text-center">
+                {this.state.name}
+            </div>
         </Typography>
+
         <MuiThemeProvider theme={theme}>
+<<<<<<< 476fd2943eacec9870a17050e16b152758f2adfe
           {this.state.ownerUtil}
           {this.state.follow}
+=======
+        <div className = "icon-fix">
+          <Add color="primary"/>
+          <Edit onClick={() => this.editBucket()} color="primary"/>
+          <Delete onClick={() => this.deleteBucket()}/>
+          </div>
+>>>>>>> Profile modifications
         </MuiThemeProvider>
+
         <Modal open={open} onClose={this.onCloseModal} center>
           {this.state.modal}
         </Modal>
-      </div>
+
+</div>
+
     );
   }
 }

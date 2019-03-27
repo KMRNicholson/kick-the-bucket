@@ -13,6 +13,7 @@ import AddItem from './AddItem';
 
 //Styling
 import './Profile.css';
+import BucketIcon from './bucket-3.png'
 
 const theme = createMuiTheme({
   palette: {
@@ -113,18 +114,35 @@ class ViewBucket extends Component{
 
   render() {
     return (
-      <div className="text-2">
 
-          {this.state.name}
-          <br/>
-          {this.state.desc}
-          
+  <div className="text-2 extra-padding">
+
+        <div className="center">
+          <img src={BucketIcon} alt={"BucketIcon"} style={{width:150, height:150}}/>
+        <br/>
+        <br/>
+            <div className ="text-large">
+                <b>{this.state.name}</b>
+            </div>
+            <br/>
+            <div className ="text-medium">
+            {this.state.desc}
+            <br/>
+            </div>
+        </div>
+
+        <div className = "text-better">
+        <br/>
           {this.state.items}
+        </div>
 
+        <div>
+        <br/>
           {this.state.addItem}
           <br/>
           {this.state.addIcon}
       </div>
+  </div>
     );
   }
 }
