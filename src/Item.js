@@ -12,6 +12,8 @@ import Delete from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+//Styling
+import './App.css';
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -54,12 +56,14 @@ class Item extends Component {
         label="Name"
         onChange={this.handleChange('name')}
       />
+
       <TextField
         required
         id="desc"
         label="Description"
         onChange={this.handleChange('desc')}
       />
+
       <TextField
         required
         id="link"
@@ -72,7 +76,7 @@ class Item extends Component {
       <Button className="float-right" id="save-button" variant="contained" color="primary" onClick={() => this.cancel()}>
         Cancel
       </Button>
-      <div className="mg-xs error-color">{this.state.error}</div>{this.state.error}
+      <div className="mg-xs error-color">{this.state.error}</div>
     </MuiThemeProvider>);
     this.setState({
       mode:edit
@@ -81,7 +85,7 @@ class Item extends Component {
 
   paramsCheck(){
     var results;
-    if(this.state.name.trim().length>0 && 
+    if(this.state.name.trim().length>0 &&
       this.state.desc.trim().length>0 &&
       this.state.link.trim().length>0)
     {
@@ -105,8 +109,8 @@ class Item extends Component {
         "description":item.state.desc,
         "link":item.state.link
       }
-      axios.patch(apiBaseUrl+"users/"+item.state.ownerId+"/buckets/"+item.state.bucketId+"/items/"+item.state.id, 
-        payload, 
+      axios.patch(apiBaseUrl+"users/"+item.state.ownerId+"/buckets/"+item.state.bucketId+"/items/"+item.state.id,
+        payload,
         { headers: {
           Authorization:'Bearer '+token
       }})
@@ -165,19 +169,25 @@ class Item extends Component {
   }
 
   componentWillMount = () => {
+    console.log("This is happening");
     var display = [];
     var ownerUtil = [];
 
     if(this.props.userId == this.props.ownerId){
-      ownerUtil.push(<Edit key="edit" onClick={() => this.editItem()} color="primary"/>);
       ownerUtil.push(<Delete key="del" onClick={() => this.deleteItem()}/>);
     }
 
-    display.push(<Typography>
-      {this.props.name}
-      {this.props.desc}
-      {this.props.link}
-    </Typography>);
+    display.push(
+      <div className ="text-better">
+      <Typography>
+      <pre></pre>
+      <b>{this.props.name}</b>
+      {"   "+this.props.desc}
+      {"   "+this.props.link}
+
+    </Typography>
+  </div>)
+    ;
 
     this.setState({
       name:this.props.name,
@@ -194,8 +204,10 @@ class Item extends Component {
 
   render(){
     return (
-      <div>
+
         <MuiThemeProvider theme={theme}>
+        <div className="text-better new-line">
+        <label>
           <Checkbox
             checked={this.state.isComplete}
             onChange={this.completeItem('isComplete')}
@@ -204,8 +216,13 @@ class Item extends Component {
           />
           {this.state.mode}
           {this.state.ownerUtil}
+          </label>
+       </div>
+
+
+
         </MuiThemeProvider>
-      </div>
+
     );
   }
 }

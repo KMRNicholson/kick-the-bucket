@@ -6,18 +6,23 @@ import { apiBaseUrl } from '../global-string';
 //Material UI components
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
 
 //Styling
 import './Profile.css';
+
+const styles = {
+  margin:10
+}
 
 const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#ECB030',
     },
-    secondary: blue,
   },
 });
 
@@ -65,8 +70,8 @@ class EditProfile extends Component{
 
   paramsCheck(){
     var results;
-    if(this.state.firstName.trim().length>0 && 
-      this.state.lastName.trim().length>0 && 
+    if(this.state.firstName.trim().length>0 &&
+      this.state.lastName.trim().length>0 &&
       this.state.email.trim().length>0)
     {
       results = true;
@@ -88,7 +93,7 @@ class EditProfile extends Component{
     var lastName = modal.props.lastName;
     var email = modal.props.email;
     var bio = modal.props.bio;
-    
+
     modal.setState({
       id:id,
       token:token,
@@ -108,9 +113,17 @@ class EditProfile extends Component{
 
   render() {
     return (
-      <div>
+      <div className="extra-padding">
         <form>
           <MuiThemeProvider theme={theme}>
+
+          <Typography variant="title" style={styles}>
+          <div className="text-1 text-medium small-padding">
+            <b>Edit Profile</b>
+            </div>
+          </Typography>
+
+            <div className="add-padding">
             <TextField
               required
               id="firstName"
@@ -118,7 +131,9 @@ class EditProfile extends Component{
               value={this.state.firstName}
               onChange={this.handleChange('firstName')}
               margin="normal"
+              style={styles}
             />
+
             <TextField
               required
               id="lastName"
@@ -126,6 +141,7 @@ class EditProfile extends Component{
               value={this.state.lastName}
               onChange={this.handleChange('lastName')}
               margin="normal"
+              style={styles}
             />
             <TextField
               required
@@ -134,17 +150,23 @@ class EditProfile extends Component{
               value={this.state.email}
               onChange={this.handleChange('email')}
               margin="normal"
+              style={styles}
             />
+            </div>
+            <div className="add-padding">
             <TextField
               id="bio"
               label="Bio"
               value={this.state.bio}
               onChange={this.handleChange('bio')}
               margin="normal"
+              style={styles}
             />
-            <Button className="float-right" id="save-button" variant="contained" color="primary" onClick={() => this.saveChanges()}>
+
+            <Button className="float-right" id="button-5" variant="contained" color="primary" onClick={() => this.saveChanges()}>
               Save
             </Button>
+            </div>
             <div className="mg-xs error-color">{this.state.error}</div>
           </MuiThemeProvider>
         </form>

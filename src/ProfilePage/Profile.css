@@ -1,3 +1,26 @@
+.img-center{
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+.center{
+  text-align: center;
+}
+.no-wrap{
+  word-wrap: break-word;
+}
+.text-better{
+  overflow: hidden;
+  display: inline-block;
+}
+.center-all{
+    margin:auto;
+  }
+
+.new-line{
+  display:block;
+}
+
 .float-left {
   float: left;
 }
@@ -6,6 +29,9 @@
   float: right;
 }
 
+.float-middle {
+  display: inline-block;
+}
 .card-shadow-1 {
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
@@ -14,33 +40,122 @@
   text-align: center;
 }
 
+.text-name {
+  font-size: 0.5em;
+}
+
+.text-smaller {
+  font-size: 1em;
+}
+
+.text-medium {
+  font-size: 1.25em;
+}
+
+.text-large {
+  font-size: 2em;
+}
+
+.text-1{
+  font-family: 'Archivo', sans-serif;
+}
+
+.text-2{
+  font-family: 'Karla', sans-serif;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.small-padding{
+  padding: 0.5em;
+}
+
+.add-padding{
+  padding: 1em;
+}
+
+.extra-padding{
+  padding: 1.5em;
+}
+
+.icon-fix{
+  margin-left: 2.5em;
+}
+.top-margin-profile{
+  margin-top: 5em;
+}
 .card-3 {
-  background-color: #F2F2F2;
+  background-color: #FCFCFC;
   border-radius: .5em;
   display: inline-block;
-  height: 30em;
+  height: 41.50em;
   margin: 1em;
+  margin-top: 4em;
   padding: 1em;
   position: relative;
   width: 20em;
 }
 
 .card-4 {
-  background-color: #F2F2F2;
+  background-color: #FCFCFC;
   border-radius: .5em;
-  height: 27em;
+  min-height: 27.5em;
+  height: 37em;
   margin: 1.5em;
-  margin-top: 0em;
+  margin-top: 1em;
   padding: 1em;
   width: auto;
   overflow-x: scroll;
 }
 
 #button-2 {
-  margin:1em;
+  margin: 1em;
+  margin-top: 4.6em;
 }
 
 #button-3 {
-  margin:1em;
+  background-color: #FCFCFC;
+  margin: 1em;
+  margin-top: 4.6em;
   margin-right:3em;
+}
+
+#button-4 {
+  background-color: #FCFCFC;
+  box-shadow: 0 10px 20px rgba(300,100,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  margin: 2em;
+  margin-right:3em;
+}
+
+#button-5 {
+  background-color: #FCFCFC;
+  box-shadow: 0 10px 20px rgba(300,100,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  padding: 1em 2em;
+  margin: 2em;
+  margin-right:3em;
+}
+
+#button-6 {
+  background-color: #FCFCFC;
+  box-shadow: 0 10px 20px rgba(300,100,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  padding: 1em 2em;
+  margin-left: 1em;
+
+}
+
+#createbutton {
+  margin: 1em;
+  margin-top: 3em;
+  float: right;
+  font-size: 1.25em;
+  font-family: 'Karla', sans-serif;
 }

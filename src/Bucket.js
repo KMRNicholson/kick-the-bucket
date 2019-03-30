@@ -4,7 +4,7 @@ import Modal from 'react-responsive-modal';
 import axios from 'axios';
 import { apiBaseUrl } from './global-string';
 
-//Material UI 
+//Material UI
 import Typography from '@material-ui/core/Typography';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
@@ -17,6 +17,10 @@ import ViewBucket from './ProfilePage/ViewBucket.js'
 
 //Images
 import Avatar from './ProfilePage/bucket-3.png'
+
+// Styling
+//Styling
+import './App.css';
 
 const styles = {
   margin:10
@@ -174,19 +178,31 @@ class Bucket extends Component {
   render(){
     const { open } = this.state;
     return (
-      <div>
-        <img src={this.state.avatar} style={{width:50, height:50}} alt={"Bucket"} />
+      <div className = "center-all">
+
+      <div className = "small-padding img-center float-middle">
+        <img src={this.state.avatar} style={{width:135, height:135}} alt={"Bucket"} />
+      </div>
+
         <Typography onClick={() => this.viewBucket()} style={styles}>
-          {this.state.name}
+          <div className ="text-1 text-medium text-bold text-center">
+                {this.state.name}
+            </div>
         </Typography>
+
         <MuiThemeProvider theme={theme}>
-          {this.state.ownerUtil}
-          {this.state.follow}
+          <div className = "icon-fix">
+            {this.state.ownerUtil}
+            {this.state.follow}
+          </div>
         </MuiThemeProvider>
+
         <Modal open={open} onClose={this.onCloseModal} center>
           {this.state.modal}
         </Modal>
-      </div>
+
+</div>
+
     );
   }
 }

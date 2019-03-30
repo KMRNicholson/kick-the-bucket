@@ -31,6 +31,36 @@
   text-align: center;
 }
 
+.ta-center {
+  text-align: center;
+}
+
+.text-name {
+  font-size: 0.5em;
+}
+
+.text-smaller {
+  font-size: 1em;
+}
+
+.text-1{
+  font-family: 'Archivo', sans-serif;
+}
+
+.text-2{
+  font-family: 'Karla', sans-serif;
+}
+
+.add-padding{
+  padding: 1em;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 .card-5 {
   padding:15px;
   background-color: #FCFCFC;
@@ -64,6 +94,17 @@ li{
   background-color: #FCFCFC;
   width: auto;
   height: 40vh;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  overflow-x: scroll;
+}
+
+.card-7 {
+  padding:15px;
+  background-color: #FCFCFC;
+  width: auto;
+  height: flex;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   margin-right: 1.5rem;

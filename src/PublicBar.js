@@ -26,7 +26,6 @@ const styles = {
   flex:1,
   margin:10
 }
-
 class PublicBar extends Component {
   render() {
     return (
