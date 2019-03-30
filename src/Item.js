@@ -76,7 +76,7 @@ class Item extends Component {
       <Button className="float-right" id="save-button" variant="contained" color="primary" onClick={() => this.cancel()}>
         Cancel
       </Button>
-      <div className="mg-xs error-color">{this.state.error}</div>{this.state.error}
+      <div className="mg-xs error-color">{this.state.error}</div>
     </MuiThemeProvider>);
     this.setState({
       mode:edit
@@ -169,11 +169,11 @@ class Item extends Component {
   }
 
   componentWillMount = () => {
+    console.log("This is happening");
     var display = [];
     var ownerUtil = [];
 
     if(this.props.userId == this.props.ownerId){
-      ownerUtil.push(<Edit key="edit" onClick={() => this.editItem()} color="primary"/>);
       ownerUtil.push(<Delete key="del" onClick={() => this.deleteItem()}/>);
     }
 
@@ -182,8 +182,8 @@ class Item extends Component {
       <Typography>
       <pre></pre>
       <b>{this.props.name}</b>
-      {this.props.desc}
-      {this.props.link}
+      {"   "+this.props.desc}
+      {"   "+this.props.link}
 
     </Typography>
   </div>)
@@ -214,25 +214,13 @@ class Item extends Component {
             value="isComplete"
             color="primary"
           />
-<<<<<<< 476fd2943eacec9870a17050e16b152758f2adfe
           {this.state.mode}
           {this.state.ownerUtil}
-=======
-        <b>{this.state.name}</b>
-        {"   "}
-
-        {this.state.desc}
-        {"   "}
-        {this.state.link}
-        {"   "}
           </label>
-          <Edit onClick={() => this.editItem()} color="primary"/>
-          <Delete onClick={() => this.deleteItem()}/>
        </div>
 
 
 
->>>>>>> Profile modifications
         </MuiThemeProvider>
 
     );

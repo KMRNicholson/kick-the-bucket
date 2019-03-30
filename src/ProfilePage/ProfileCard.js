@@ -205,7 +205,7 @@ class ProfileCard extends Component {
                 {this.state.bio}
               </div>
             </Typography>
-</div>
+          </div>
           </MuiThemeProvider>
 
         </form>

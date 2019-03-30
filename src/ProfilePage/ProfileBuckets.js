@@ -25,6 +25,12 @@ const theme = createMuiTheme({
   },
 });
 
+const styles = {
+  float: 'right',
+  'font-size': '1.25em',
+  'font-family': "'Karla', sans-serif"
+}
+
 class ProfileBuckets extends Component {
   constructor(props){
     super(props);
@@ -50,7 +56,7 @@ class ProfileBuckets extends Component {
     component.push(<MyBuckets parentContext={this} key="myBuckets"/>);
 
     if(id == searchId){
-      button.push(<Button key="fbutton" className="float-right text-2 text-medium" color="primary" variant="contained" onClick={() => this.createBucket()}>Create Bucket!</Button>);
+      button.push(<Button key="fbutton" color="primary" variant="contained" onClick={() => this.createBucket()}>Create Bucket!</Button>);
     }
 
     this.setState({
@@ -73,7 +79,10 @@ class ProfileBuckets extends Component {
     var button = [];
 
     if(id == searchId){
-      button.push(<Button key="fbutton" color="primary" variant="contained" onClick={() => this.createBucket()}>Create Bucket!</Button>);
+      button.push(
+      <Button id="createbutton" key="fbutton" color="primary" variant="contained" onClick={() => this.createBucket()}>
+          Create Bucket!
+      </Button>);
     }
 
     this.setState({
@@ -119,13 +128,13 @@ class ProfileBuckets extends Component {
       <div className="ProfileBuckets">
         <MuiThemeProvider theme={theme}>
           <Button id="button-2" variant="contained" color="secondary" onClick={() => this.myBuckets()}>
-            <div className ="text-2 text-medium ">
+            <div className="text-2 text-medium">
               Buckets
             </div>
           </Button>
           <Button id="button-2" variant="contained" color="secondary" onClick={() => this.followedBuckets()}>
-          <div className ="text-2 text-medium ">
-            Followed Buckets
+            <div className="text-2 text-medium">
+              Followed Buckets
             </div>
           </Button>
           {this.state.createBucketButton}

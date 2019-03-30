@@ -118,7 +118,6 @@ margin-right: auto;
 }
 
 #button-2 {
-  background-color: #FCFCFC;
   margin: 1em;
   margin-top: 4.6em;
 }
@@ -151,4 +150,12 @@ margin-right: auto;
   padding: 1em 2em;
   margin-left: 1em;
 
+}
+
+#createbutton {
+  margin: 1em;
+  margin-top: 3em;
+  float: right;
+  font-size: 1.25em;
+  font-family: 'Karla', sans-serif;
 }

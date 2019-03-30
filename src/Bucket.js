@@ -191,16 +191,10 @@ class Bucket extends Component {
         </Typography>
 
         <MuiThemeProvider theme={theme}>
-<<<<<<< 476fd2943eacec9870a17050e16b152758f2adfe
-          {this.state.ownerUtil}
-          {this.state.follow}
-=======
-        <div className = "icon-fix">
-          <Add color="primary"/>
-          <Edit onClick={() => this.editBucket()} color="primary"/>
-          <Delete onClick={() => this.deleteBucket()}/>
+          <div className = "icon-fix">
+            {this.state.ownerUtil}
+            {this.state.follow}
           </div>
->>>>>>> Profile modifications
         </MuiThemeProvider>
 
         <Modal open={open} onClose={this.onCloseModal} center>
