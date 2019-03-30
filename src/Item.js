@@ -173,25 +173,17 @@ class Item extends Component {
     var display = [];
     var ownerUtil = [];
 
-<<<<<<< HEAD
     if(this.props.userId == this.props.ownerId){
       ownerUtil.push(<Delete key="del" onClick={() => this.deleteItem()}/>);
     }
 
-=======
->>>>>>> 8ec7c61d96795ab42c7fc039dea67df92e2c677f
     display.push(
       <div className ="text-better">
       <Typography>
       <pre></pre>
       <b>{this.props.name}</b>
-<<<<<<< HEAD
       {"   "+this.props.desc}
       {"   "+this.props.link}
-=======
-      {this.props.desc}
-      {this.props.link}
->>>>>>> 8ec7c61d96795ab42c7fc039dea67df92e2c677f
 
     </Typography>
   </div>)
@@ -222,22 +214,9 @@ class Item extends Component {
             value="isComplete"
             color="primary"
           />
-<<<<<<< HEAD
           {this.state.mode}
           {this.state.ownerUtil}
           </label>
-=======
-        <b>{this.state.name}</b>
-        {"   "}
-
-        {this.state.desc}
-        {"   "}
-        {this.state.link}
-        {"   "}
-          </label>
-          <Edit onClick={() => this.editItem()} color="primary"/>
-          <Delete onClick={() => this.deleteItem()}/>
->>>>>>> 8ec7c61d96795ab42c7fc039dea67df92e2c677f
        </div>
 
 

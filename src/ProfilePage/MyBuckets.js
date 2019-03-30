@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { apiBaseUrl } from '../global-string';
-import { SizeMe } from 'react-sizeme';
 
 //Project imports
 import Bucket from '../Bucket.js'
