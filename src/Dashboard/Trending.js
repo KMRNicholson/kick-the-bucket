@@ -21,13 +21,19 @@ class Trending extends Component {
 
   componentWillMount(){
     //This information will be filled when calling the backend
-    var activity = ["#Asiatrip",
+    var activity = ["#asiatrip",
       "#MonctonSkydiving",
       "#2018Adventures",
-      "#Europe",
+      "#europe",
       "#ecofriendly",
-      "#meganisthebest",
-      "#gogreen"
+      "#tripadvisor",
+      "#gogreen",
+      "#bfftrip",
+      "#gradgoals",
+      "#goclean2019",
+      "#KicktheBucket",
+      "#programmingSkills",
+      "#BestTeamEver"
     ];
     this.setState({
       activity:activity
@@ -37,7 +43,7 @@ class Trending extends Component {
   render() {
     return (
       <div>
-        <form className="card-5 card-shadow-1">
+        <form className="card-8 card-shadow-1">
           <Typography variant="title" style={styles}>
           <div className="font-colour">
             <b>#Trending</b>
@@ -50,6 +56,14 @@ class Trending extends Component {
               <li>{this.state.activity[2]}</li>
               <li>{this.state.activity[3]}</li>
               <li>{this.state.activity[4]}</li>
+              <li>{this.state.activity[5]}</li>
+              <li>{this.state.activity[6]}</li>
+              <li>{this.state.activity[7]}</li>
+              <li>{this.state.activity[8]}</li>
+              <li>{this.state.activity[9]}</li>
+              <li>{this.state.activity[10]}</li>
+              <li>{this.state.activity[11]}</li>
+              <li>{this.state.activity[12]}</li>
             </ul>
           </div>
         </form>
