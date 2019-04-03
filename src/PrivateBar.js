@@ -72,7 +72,7 @@ class PrivateBar extends Component {
 
   renderInput(inputProps) {
     const { InputProps, classes, ref, ...other } = inputProps;
-  
+
     return (
       <TextField
         InputProps={{
@@ -98,7 +98,10 @@ class PrivateBar extends Component {
               <Link to="/" style={{ textDecoration: 'none', color: '#222' }}><b>Kick the Bucket</b></Link>
             </Typography>
             <SearchIcon/>
+            <div className = "search-padding">
             <SearchBar parentContext={this}/>
+            </div>
+
             <Button onClick={(event) => this.goToDashboard(event)}>
               Dashboard
               <Dashboard></Dashboard>

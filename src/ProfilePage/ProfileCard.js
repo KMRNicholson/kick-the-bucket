@@ -17,7 +17,7 @@ import EditProfile from './EditProfile';
 import './Profile.css';
 
 //Images
-import Avatar from './snowboard.png'
+import Avatar from './avatar.png'
 
 const styles = {
   margin:10

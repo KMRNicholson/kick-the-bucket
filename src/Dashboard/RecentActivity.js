@@ -21,9 +21,11 @@ class RecentActivity extends Component {
 
   componentWillMount(){
     //This information will be filled when calling the backend
-    var activity = ["Liked Camping Trip 2018 2hrs ago",
-      "Followed Japan 2019 8hrs ago",
-      "Completed bucket PEI 2018 23hrs ago"
+    var activity = ["Liked Camping Trip 2018 2 hrs ago",
+      "Followed Japan 2019 8 hrs ago",
+      "Completed bucket PEI 2018 23 hrs ago",
+      "Liked Coffee Shops 1 day ago",
+      "Activity is up to date!"
     ];
     this.setState({
       activity:activity
@@ -33,7 +35,7 @@ class RecentActivity extends Component {
   render() {
     return (
       <div>
-        <form className="card-5 card-shadow-1">
+        <form className="card-9 card-shadow-1">
           <Typography variant="title" style={styles}>
           <div className="font-colour">
             <b>Recent Activity</b>
@@ -44,6 +46,9 @@ class RecentActivity extends Component {
               <li>{this.state.activity[0]}</li>
               <li>{this.state.activity[1]}</li>
               <li>{this.state.activity[2]}</li>
+              <li>{this.state.activity[3]}</li>
+              <li>{this.state.activity[4]}</li>
+
             </ul>
           </div>
         </form>

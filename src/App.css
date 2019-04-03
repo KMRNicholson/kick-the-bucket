@@ -117,6 +117,14 @@ body {
   font-family: 'Archivo', sans-serif;
 }
 
+.search-padding{
+  padding-right: 3em;
+}
+
+.top-padding{
+  padding-top: 1em;
+}
+
 .card-1 {
   background-color: #F2F2F2;
   border-radius: .5em;
