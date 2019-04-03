@@ -43,8 +43,11 @@ class FollowedBuckets extends Component {
       var buckets = [];
       var count = 0;
       response.data.forEach((element, index, array) => {
-        buckets.push(<Bucket 
-          name={element.name} 
+        buckets.push(
+          <div className = "float-left">
+          <div className = "extra-padding">
+          <Bucket
+          name={element.name}
           isPublic={element.isPublic}
           desc={element.description}
           id={element.id}
@@ -52,10 +55,13 @@ class FollowedBuckets extends Component {
           userId={id}
           token={token}
           key={"bucket"+count+1}
-          parentContext={page} />);
-        
+          parentContext={page} />
+          </div>
+        </div>
+        );
+
         count++;
-        
+
         if(count === array.length) {
           page.setState({
             buckets:buckets
@@ -72,7 +78,9 @@ class FollowedBuckets extends Component {
     return (
       <div className="card-4 card-shadow-1">
         <Typography variant="title" style={styles}>
-          Followed Buckets
+        <div className="text-1 text-medium ">
+         Followed Buckets
+          </div>
         </Typography>
         {this.state.buckets}
       </div>

@@ -44,10 +44,10 @@ class IntegrationAutosuggest extends React.Component {
     single: '',
     suggestions: [],
   };
-  
+
   renderInputComponent = (inputProps) => {
     const { classes, inputRef = () => {}, ref, ...other } = inputProps;
-  
+
     return (
       <TextField
         fullWidth
@@ -64,11 +64,11 @@ class IntegrationAutosuggest extends React.Component {
       />
     );
   }
-  
+
   renderSuggestion = (suggestion, { query, isHighlighted }) => {
     const matches = match(suggestion.label, query);
     const parts = parse(suggestion.label, matches);
-  
+
     return (
       <MenuItem selected={isHighlighted} component="div" onClick={()=>this.clickSuggestion(suggestion)}>
         <div>
@@ -87,7 +87,7 @@ class IntegrationAutosuggest extends React.Component {
       </MenuItem>
     );
   }
-  
+
   clickSuggestion = (user) => {
     var page = this;
     var id = page.props.parentContext.state.id;
@@ -101,7 +101,7 @@ class IntegrationAutosuggest extends React.Component {
       }
     });
   }
-  
+
   getSuggestionValue(suggestion) {
     return suggestion.label;
   }
@@ -120,7 +120,7 @@ class IntegrationAutosuggest extends React.Component {
       Array.prototype.forEach.call(response.data.users, (element, index, array) => {
         users.push({label: element.firstName+" "+element.lastName, id: element.id});
         count++;
-        
+
         if(count === array.length) {
           page.setState({
             suggestions: users,
@@ -162,7 +162,7 @@ class IntegrationAutosuggest extends React.Component {
           {...autosuggestProps}
           inputProps={{
             classes,
-            placeholder: 'Find friends and experiences...',
+            placeholder: 'Search Buckets...',
             value: this.state.single,
             onChange: this.handleChange('single'),
           }}

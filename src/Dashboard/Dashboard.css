@@ -27,10 +27,56 @@
   font-size: 1.40em;
 }
 
+.text-bigger {
+  font-size: 2.40em;
+}
+
 .ta-center {
   text-align: center;
 }
 
+.ta-center {
+  text-align: center;
+}
+
+.text-name {
+  font-size: 0.5em;
+}
+
+.text-smaller {
+  font-size: 1em;
+}
+
+.text-1{
+  font-family: 'Archivo', sans-serif;
+}
+
+.text-2{
+  font-family: 'Karla', sans-serif;
+}
+
+.add-padding{
+  padding: 1em;
+}
+
+.sm-padding{
+  padding: 0.5em;
+}
+
+.add-padding2{
+  padding: 2em;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 .card-5 {
   padding:15px;
   background-color: #FCFCFC;
@@ -47,6 +93,16 @@
   font-size: auto;
 }
 
+.left-padding{
+  padding-left: 1em;
+}
+.left-padding2{
+  padding-left: 2em;
+}
+
+.right-padding{
+  padding-right: 1em;
+}
 ul{
   list-style-type: none;
   padding-left: 0em;
@@ -70,6 +126,36 @@ li{
   overflow-x: scroll;
 }
 
+.card-7 {
+  padding:15px;
+  background-color: #FCFCFC;
+  width: auto;
+  height: flex;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  overflow-x: scroll;
+}
+
+.card-8 {
+  padding:15px;
+  background-color: #FCFCFC;
+  width: 11em;
+  height: 41.15em;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.card-9 {
+  padding:15px;
+  background-color: #FCFCFC;
+  width: 11em;
+  height: 27.25em;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
 
 #button-2 {
   margin:1em;
