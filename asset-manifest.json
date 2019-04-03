@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.679b199b.css",
-  "main.css.map": "static/css/main.679b199b.css.map",
-  "main.js": "static/js/main.4f682fd8.js",
-  "main.js.map": "static/js/main.4f682fd8.js.map",
+  "main.css": "static/css/main.f9ad0080.css",
+  "main.css.map": "static/css/main.f9ad0080.css.map",
+  "main.js": "static/js/main.a91f3483.js",
+  "main.js.map": "static/js/main.a91f3483.js.map",
   "static/media/archivo-latin-400.woff": "static/media/archivo-latin-400.cb3502f3.woff",
   "static/media/archivo-latin-400.woff2": "static/media/archivo-latin-400.ced69cad.woff2",
   "static/media/archivo-latin-400italic.woff": "static/media/archivo-latin-400italic.c3ce6175.woff",
@@ -19,7 +19,9 @@
   "static/media/archivo-latin-700.woff2": "static/media/archivo-latin-700.0852bc4a.woff2",
   "static/media/archivo-latin-700italic.woff": "static/media/archivo-latin-700italic.ffe030ad.woff",
   "static/media/archivo-latin-700italic.woff2": "static/media/archivo-latin-700italic.95cc475d.woff2",
+  "static/media/avatar.png": "static/media/avatar.5d0cf683.png",
   "static/media/bucket.png": "static/media/bucket.bbd4bfc9.png",
+  "static/media/friends.png": "static/media/friends.d211f2be.png",
   "static/media/karla-latin-400.woff": "static/media/karla-latin-400.915346bf.woff",
   "static/media/karla-latin-400.woff2": "static/media/karla-latin-400.27b852a4.woff2",
   "static/media/karla-latin-400italic.woff": "static/media/karla-latin-400italic.31cc10ef.woff",
@@ -32,5 +34,5 @@
   "static/media/slide1.png": "static/media/slide1.16db0d55.png",
   "static/media/slide2.png": "static/media/slide2.fe872856.png",
   "static/media/slide3.png": "static/media/slide3.430338b3.png",
-  "static/media/snowboard.png": "static/media/snowboard.64d2e2f0.png"
+  "static/media/travel.png": "static/media/travel.eeb0e193.png"
 }
