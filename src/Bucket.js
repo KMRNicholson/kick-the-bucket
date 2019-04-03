@@ -181,11 +181,11 @@ class Bucket extends Component {
       <div className = "center-all">
 
       <div className = "small-padding img-center float-middle">
-        <img src={this.state.avatar} style={{width:135, height:135}} alt={"Bucket"} />
+        <img onClick={() => this.viewBucket()} src={this.state.avatar} style={{width:135, cursor:'pointer', height:135}} alt={"Bucket"} />
       </div>
 
         <Typography onClick={() => this.viewBucket()} style={styles}>
-          <div className ="text-1 text-medium text-bold text-center">
+          <div className ="text-1 text-medium text-bold text-center pointer">
                 {this.state.name}
             </div>
         </Typography>
