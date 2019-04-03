@@ -168,7 +168,7 @@ class ProfileCard extends Component {
         console.log(error);
       });
     }else{
-      settings.push(<Setting key="edituser" onClick={() => this.editProfile()} color="primary"/>)
+      settings.push(<Setting key="edituser" onClick={() => this.editProfile()} color="primary" style={{cursor:'pointer'}}/>)
       this.finishRequest(button, settings);
     }
   }
